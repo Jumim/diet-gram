@@ -2,15 +2,14 @@ import './Input.scss';
 
 interface InputType {
   name: string
-  register: any
-  type?: string
+  type: string
   defaultValue?: string | number
   placeholder?: string
-  className?: string | undefined
+  register?: any
 }
 
-export const Input = ({name, register, ...props}: InputType) => {
+export const Input = ({name, ...props}: InputType) => {
   return (
-    <input {...register(name)} {...props} />
+    <input {...props} />
   );
 }

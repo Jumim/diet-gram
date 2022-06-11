@@ -1,24 +1,22 @@
 import React from 'react';
 import './Button.scss';
 
-interface ButtonType {
-  btnType: 'btn1' | 'btn2' | 'btn3' | 'btn4'
-  type: 'button' | 'submit' | 'reset' | undefined
+interface ButtonProps {
+  btnType: 'positive' | 'negative' | 'default'
+  type: 'button' | 'submit' | 'reset'
   text: string
-  onClick?: React.MouseEventHandler<HTMLButtonElement>
+  onClick?: () => void
 }
 
-export const Button= ({btnType, type, text, onClick}: ButtonType) => {
+export const Button= ({
+  btnType = 'default',
+  type = 'button',
+  text,
+  onClick
+}: ButtonProps) => {
   return (
     <button className={['Button', `Button_${btnType}`].join(' ')} type={type} onClick={onClick}>
       {text}
     </button>
   );
-}
-
-Button.defaultProps = {
-  btnType: 'btn1',
-  type: 'button',
-  text: '',
-  onClick: ()=>{}
 }

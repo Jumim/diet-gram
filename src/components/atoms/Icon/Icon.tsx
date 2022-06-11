@@ -1,11 +1,14 @@
 import './Icon.scss';
 
 interface IconType {
-  type: string
+  type: 'default' | 'breakfast' | 'lunch' | 'dinner' | 'snack'
   text: string
 }
 
-export const Icon = ({type, text}: IconType) => {
+export const Icon = ({
+  type = 'default',
+  text
+}: IconType) => {
   return (
     <div className={`Icon Icon_${type}`}>
       {text}

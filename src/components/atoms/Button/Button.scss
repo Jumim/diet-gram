@@ -11,29 +11,22 @@
   font-family: inherit;
   cursor: pointer;
 
-  /* Btn1 */
-  &.Button_btn1 {
+  /* positive */
+  &.Button_positive {
     background-color: $blue;
     color: white;
   }
 
-  /* Btn2 */
-  &.Button_btn2 {
+  /* negative */
+  &.Button_negative {
     background-color: $red;
     color: white;
   }
 
-  /* Btn3 */
-  &.Button_btn3 {
+  /* default */
+  &.Button_default {
     background-color: transparent;
     color: $darkgray;
-    vertical-align: sub;
-  }
-
-  /* Btn4 */
-  &.Button_btn4 {
-    background-color: $yerrow;
-    color: white;
   }
 }
 
