@@ -6,7 +6,6 @@ export {Input} from './atoms/Input/Input';
 export {Label} from './atoms/Label/Label';
 export {Text} from './atoms/Text/Text';
 export {Title} from './atoms/Title/Title';
-export {Wrapper} from './atoms/Wrapper/Wrapper';
 
 /* molecules */
 
