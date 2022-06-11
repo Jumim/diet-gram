@@ -1,0 +1,9 @@
+@import '_variable.scss';
+
+.Feed {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid $gray;
+  padding: 20px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,25 @@
+@import '_variable.scss';
+
+/* Input Style */
+input {
+  width: 100%;
+  height: 50px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1px solid $gray;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.8em;
+
+  &:focus {
+    border: 2px solid $blue;
+    outline: none;
+  }
+}
+
+@media (pointer: coarse) {
+  input {
+    font-size: 1.0em;
+    height: 40px;
+  }
+}

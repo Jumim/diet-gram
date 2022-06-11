@@ -1,0 +1,45 @@
+@import '_variable.scss';
+
+/* Button Style */
+.Button {
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9em;
+  font-family: inherit;
+  cursor: pointer;
+
+  /* Btn1 */
+  &.Button_btn1 {
+    background-color: $blue;
+    color: white;
+  }
+
+  /* Btn2 */
+  &.Button_btn2 {
+    background-color: $red;
+    color: white;
+  }
+
+  /* Btn3 */
+  &.Button_btn3 {
+    background-color: transparent;
+    color: $darkgray;
+    vertical-align: sub;
+  }
+
+  /* Btn4 */
+  &.Button_btn4 {
+    background-color: $yerrow;
+    color: white;
+  }
+}
+
+@media (pointer: coarse) {
+  .Button {
+    font-size: 1.0em;
+    height: 40px;
+  }
+}

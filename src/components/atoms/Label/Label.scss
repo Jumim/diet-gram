@@ -1,0 +1,11 @@
+/* Label Style */
+label {
+  font-size: 0.9em;
+  transform: skew(-0.03deg);
+}
+
+@media (pointer: coarse) {
+  label {
+    font-size: 1.0em;
+  }
+}

@@ -1,0 +1,46 @@
+@import '_variable.scss';
+
+.Icon_breakfast, .Icon_lunch, .Icon_dinner, .Icon_snack {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: 20px;
+  font-size: 0.9em;
+  text-align: center;
+  color: $white;
+  border-radius: 6px;
+  border: 1px solid $rightgray;
+  padding: 5px 12px;
+
+  &.Icon_breakfast {
+    background-color: $yerrow;
+  }
+
+  &.Icon_lunch {
+    background-color: $green;
+  }
+
+  &.Icon_dinner {
+    background-color: $blue;
+  }
+
+  &.Icon_snack {
+    background-color: $darkgray;
+  }
+
+}
+
+
+.Icon_default {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  height: 20px;
+  font-size: 0.9em;
+  text-align: center;
+  color: $darkgray;
+  background-color: $white;
+  border-radius: 6px;
+  border: 1px solid $gray;
+  padding: 5px;
+}

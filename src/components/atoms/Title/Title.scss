@@ -1,0 +1,16 @@
+@import '_variable.scss';
+
+.title {
+  color: $darkgray;
+  font-size: 1.0em;
+  font-weight: 600;
+  letter-spacing: -1.2px;
+  transform: skew(-0.03deg);
+  margin: 0;
+}
+
+@media (max-width: 620px) {
+  .title {
+    font-size: 1.2em;
+  }
+}
