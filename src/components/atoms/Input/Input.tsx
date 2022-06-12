@@ -3,13 +3,13 @@ import './Input.scss';
 interface InputType {
   name: string
   type: string
-  defaultValue?: string | number
-  placeholder?: string
-  register?: any
+  onChange: () => void
+  defaultValue?: string | number | undefined
+  placeholder?: string | undefined
 }
 
-export const Input = ({name, ...props}: InputType) => {
+export const Input = ({...props}: InputType) => {
   return (
-    <input {...props} />
+    <input {...props}/>
   );
 }

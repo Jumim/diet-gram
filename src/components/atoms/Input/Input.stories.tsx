@@ -10,7 +10,7 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  name: '',
+  name: 'test',
   type: 'text',
   placeholder: '텍스트를 입력해주세요.'
 };
