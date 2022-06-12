@@ -1,11 +1,12 @@
-import { LoginForm, Title, DefaultTemplate } from 'components';
+import { Title, DefaultTemplate } from 'components';
+import { LoginFormContainer } from 'containers';
 import './LoginPage.scss';
 
 export const LoginPage = () => {
   return (
     <DefaultTemplate>
       <Title>로그인</Title>
-      <LoginForm onSubmit={() => { console.log('login form submit') }} />
+      <LoginFormContainer />
     </DefaultTemplate>
   )
 }

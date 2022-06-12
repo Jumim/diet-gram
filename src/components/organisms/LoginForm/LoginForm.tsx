@@ -3,23 +3,24 @@ import './LoginForm.scss';
 
 interface LoginFormProps {
   onSubmit: () => void
+  register: any
 }
 
-export const LoginForm = ({ onSubmit }: LoginFormProps) => {
+export const LoginForm = ({ onSubmit, register }: LoginFormProps) => {
   return (
     <Form onSubmit={onSubmit}>
       <InputArea
         label='아이디'
         name='id'
         type='text'
-        onChange={() => {}}
+        register={register}
         placeholder='아이디를 입력해주세요.'
       />
       <InputArea
         label='비밀번호'
         name='password'
         type='password'
-        onChange={() => {}}
+        register={register}
         placeholder='비밀번호를 입력해주세요.'
       />
       <Button btnType='positive' type='submit' text='로그인' />

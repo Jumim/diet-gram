@@ -6,7 +6,7 @@ interface InputAreaProps {
   error?: string
   name: string
   type: string
-  onChange: () => void
+  register: any
   defaultValue?: string | number | undefined
   placeholder?: string | undefined
 }

@@ -3,37 +3,38 @@ import './JoinForm.scss';
 
 interface JoinFormProps {
   onSubmit: () => void
+  register: any
 }
 
-export const JoinForm = ({ onSubmit }: JoinFormProps) => {
+export const JoinForm = ({ onSubmit, register }: JoinFormProps) => {
   return (
     <Form onSubmit={onSubmit}>
       <InputArea
         label='아이디'
         name='id'
         type='text'
-        onChange={() => { }}
+        register={register}
         placeholder='아이디를 입력해주세요.'
       />
       <InputArea
         label='비밀번호'
         name='password'
         type='password'
-        onChange={() => { }}
+        register={register}
         placeholder='비밀번호를 입력해주세요.'
       />
       <InputArea
         label='비밀번호 확인'
         name='passwordCheck'
         type='password'
-        onChange={() => { }}
+        register={register}
         placeholder='비밀번호를 입력해주세요.'
       />
       <InputArea
         label='닉네임'
         name='nickname'
         type='text'
-        onChange={() => { }}
+        register={register}
         placeholder='닉네임을 입력해주세요.'
       />
       <div className='InputRow'>
@@ -41,20 +42,21 @@ export const JoinForm = ({ onSubmit }: JoinFormProps) => {
           label='나이'
           name='age'
           type='number'
-          onChange={() => { }}
+          register={register}
           placeholder='나이를 입력해주세요.'
         />
         <InputArea
           label='키'
           name='height'
           type='number'
-          onChange={() => { }}
+          register={register}
           placeholder='키를 입력해주세요.'
         />
       </div>
       <SelectArea
-        name='activityLevel'
         label='활동 레벨'
+        name='activityLevel'
+        register={register}
         item={activityLevelList}
       />
       <Button btnType='positive' type='submit' text='회원가입' />

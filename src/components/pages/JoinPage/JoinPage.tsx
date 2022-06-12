@@ -1,10 +1,11 @@
-import { JoinForm, Title, DefaultTemplate } from 'components';
+import { Title, DefaultTemplate } from 'components';
+import { JoinFormContainer } from 'containers';
 
 export const JoinPage = () => {
   return (
     <DefaultTemplate>
       <Title>회원가입</Title>
-      <JoinForm onSubmit={() => {}} />
+      <JoinFormContainer />
     </DefaultTemplate>
   )
 }
