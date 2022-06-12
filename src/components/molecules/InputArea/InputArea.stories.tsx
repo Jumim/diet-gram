@@ -1,3 +1,4 @@
+import { useForm } from 'react-hook-form';
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { InputArea } from "./InputArea";
 
@@ -6,7 +7,13 @@ export default {
   component: InputArea,
 } as ComponentMeta<typeof InputArea>;
 
-const Template: ComponentStory<typeof InputArea> = (args) => <InputArea {...args} />;
+const Template: ComponentStory<typeof InputArea> = (args) => {
+  const { register } = useForm();
+
+  return (
+    <InputArea {...args} register={register} />
+  )
+};
 
 export const Default = Template.bind({});
 Default.args = {

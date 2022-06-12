@@ -11,5 +11,5 @@ const Template: ComponentStory<typeof Feed> = (args) => <Feed {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   className: '',
-  children: ''
+  children: '피드 내용'
 };

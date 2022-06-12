@@ -3,7 +3,7 @@ import './Input.scss';
 interface InputType {
   name: string
   type: string
-  register: any
+  register?: any
   defaultValue?: string | number | undefined
   placeholder?: string | undefined
 }

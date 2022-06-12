@@ -28,6 +28,11 @@
     background-color: transparent;
     color: $darkgray;
   }
+
+  &:focus {
+    border: none;
+    outline: none;
+  }
 }
 
 @media (pointer: coarse) {
