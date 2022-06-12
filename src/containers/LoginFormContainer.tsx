@@ -1,10 +1,11 @@
 import {useForm, SubmitHandler} from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { login } from 'config/auth';
 import { LoginForm } from 'components';
 
 interface LoginFormType {
-  id: string
+  email: string
   password: string
 }
 
@@ -13,9 +14,12 @@ export const LoginFormContainer = () => {
     resolver: yupResolver(userFormSchema)
   });
 
-  const onSubmit: SubmitHandler<LoginFormType> = (data: any) => {
-    console.log(data);
-    console.log('login form submit');
+  const onSubmit: SubmitHandler<LoginFormType> = async (data: any) => {
+    try {
+      await login(data.email, data.password);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -27,9 +31,9 @@ export const LoginFormContainer = () => {
 }
 
 const userFormSchema = yup.object().shape({
-  id: yup
+  email: yup
     .string()
-    .required('아이디를 입력해주세요.'),
+    .required('이메일을 입력해주세요.'),
   password: yup
     .string()
     .required('비밀번호를 입력해주세요.')

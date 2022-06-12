@@ -10,8 +10,8 @@ export const LoginForm = ({ onSubmit, register }: LoginFormProps) => {
   return (
     <Form onSubmit={onSubmit}>
       <InputArea
-        label='아이디'
-        name='id'
+        label='이메일'
+        name='email'
         type='text'
         register={register}
         placeholder='아이디를 입력해주세요.'

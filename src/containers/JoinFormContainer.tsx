@@ -1,26 +1,26 @@
-import {useForm, SubmitHandler} from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { join } from 'config/auth';
 import { JoinForm } from 'components';
 
 interface JoinFormType {
-  id: string
+  email: string
   password: string
   passwordCheck: string
-  nickname: string
-  age: number
-  height: number
-  activityLevel: string
 }
 
 export const JoinFormContainer = () => {
-  const {register, handleSubmit} = useForm<JoinFormType>({
+  const { register, handleSubmit } = useForm<JoinFormType>({
     resolver: yupResolver(userFormSchema)
   });
 
-  const onSubmit: SubmitHandler<JoinFormType> = (data: any) => {
-    console.log(data);
-    console.log('join form submit');
+  const onSubmit: SubmitHandler<JoinFormType> = async (data: any) => {
+    try {
+      await join(data.email, data.password);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -32,6 +32,16 @@ export const JoinFormContainer = () => {
 }
 
 const userFormSchema = yup.object().shape({
+  email: yup
+    .string()
+    .required('이메일을 입력해주세요.'),
+  password: yup
+    .string()
+    .required('비밀번호를 입력해주세요.'),
+  passwordCheck: yup
+    .string()
+    .required('비밀번호를 입력해주세요.')
+    .oneOf([yup.ref('password')], '비밀번호가 일치하지 않습니다.'),
 });
 
 // 권장 칼로리 게산
@@ -62,8 +72,8 @@ const recommendedCalorie = (height: number, activityLevel: string) => {
 }
 
 const activityLevelList = [
-  {name: '매우 활동적', value: '4'},
-  {name: '활동적', value: '3'},
-  {name: '비교적 활동적', value: '2'},
-  {name: '거의 활동하지 않음', value: '1'}
+  { name: '매우 활동적', value: '4' },
+  { name: '활동적', value: '3' },
+  { name: '비교적 활동적', value: '2' },
+  { name: '거의 활동하지 않음', value: '1' }
 ];
