@@ -11,7 +11,7 @@ interface JoinFormType {
 }
 
 export const JoinFormContainer = () => {
-  const { register, handleSubmit } = useForm<JoinFormType>({
+  const { register, handleSubmit, formState: { errors } } = useForm<JoinFormType>({
     resolver: yupResolver(userFormSchema)
   });
 
@@ -27,6 +27,7 @@ export const JoinFormContainer = () => {
     <JoinForm
       onSubmit={handleSubmit(onSubmit)}
       register={register}
+      errors={errors}
     />
   );
 }
@@ -34,46 +35,17 @@ export const JoinFormContainer = () => {
 const userFormSchema = yup.object().shape({
   email: yup
     .string()
+    .email()
+    .min(5, '이메일 5자 이상 10자 이하로 입력해주세요.')
+    .max(10, '이메일은 5자 이상 10자 이하로 입력해주세요.')
     .required('이메일을 입력해주세요.'),
   password: yup
     .string()
+    .min(8, '비밀번호는 8자 이상 20자 이하로 입력해주세요.')
+    .max(20, '비밀번호는 8자 이상 20자 이하로 입력해주세요.')
     .required('비밀번호를 입력해주세요.'),
   passwordCheck: yup
     .string()
     .required('비밀번호를 입력해주세요.')
     .oneOf([yup.ref('password')], '비밀번호가 일치하지 않습니다.'),
 });
-
-// 권장 칼로리 게산
-const recommendedCalorie = (height: number, activityLevel: string) => {
-  let daykcal = 0;
-  let activityIndex = 0;
-
-  // 활동지수
-  switch (activityLevel) {
-    case '1':
-      activityIndex = 25;
-      break;
-    case '2':
-      activityIndex = 30;
-      break;
-    case '3':
-      activityIndex = 35;
-      break;
-    case '4':
-      activityIndex = 40;
-      break;
-  }
-
-  // 권장 칼로리 계산
-  daykcal = Math.floor(((height - 100) * 0.9) * activityIndex);
-
-  return daykcal;
-}
-
-const activityLevelList = [
-  { name: '매우 활동적', value: '4' },
-  { name: '활동적', value: '3' },
-  { name: '비교적 활동적', value: '2' },
-  { name: '거의 활동하지 않음', value: '1' }
-];
