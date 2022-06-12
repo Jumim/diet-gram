@@ -11,13 +11,17 @@ export { Title } from './atoms/Title/Title';
 /* molecules */
 export { Form } from './molecules/Form/Form';
 export { InputArea } from './molecules/InputArea/InputArea';
+export {SelectArea} from './molecules/SelectArea/SelectArea';
 
 /* organisms */
 export { Header } from './organisms/Header/Header';
 export { LoginForm } from './organisms/LoginForm/LoginForm';
+export { JoinForm } from './organisms/JoinForm/JoinForm';
 
 /* pages */
+export { JoinPage } from './pages/JoinPage/JoinPage';
 export { LoginPage } from './pages/LoginPage/LoginPage';
+export { MainPage } from './pages/MainPage/MainPage';
 
 /* templetes */
 export { DefaultTemplate } from './templetes/DefaultTemplate/DefaultTemplate';
