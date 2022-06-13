@@ -1,9 +1,9 @@
 import { MainTemplate } from 'components';
-import { MainContainer } from 'containers';
+import { MainContainer, MainHeaderContainer } from 'containers';
 
 export const MainPage = () => {
   return (
-    <MainTemplate>
+    <MainTemplate header={<MainHeaderContainer />}>
       <MainContainer />
     </MainTemplate>
   )

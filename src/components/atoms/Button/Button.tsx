@@ -4,7 +4,7 @@ import './Button.scss';
 interface ButtonProps {
   btnType: 'positive' | 'negative' | 'default'
   type: 'button' | 'submit' | 'reset'
-  text: string
+  text: string | React.ReactNode
   onClick?: () => void
 }
 

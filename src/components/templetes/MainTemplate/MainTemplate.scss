@@ -1,0 +1,12 @@
+@import '_variable.scss';
+
+.MainTemplate {
+  width: 100%;
+  padding: 0 240px;
+  box-sizing: border-box;
+
+  .MainContents {
+    width: 100%;
+    background-color: $white;
+  }
+}
