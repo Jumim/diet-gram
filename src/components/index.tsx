@@ -11,10 +11,14 @@ export { Title } from './atoms/Title/Title';
 
 /* molecules */
 export { Form } from './molecules/Form/Form';
+export { IconList } from './molecules/IconList/IconList';
 export { InputArea } from './molecules/InputArea/InputArea';
 export { SelectArea } from './molecules/SelectArea/SelectArea';
+export { MyResponsivePie } from './molecules/MyResponsivePie/MyResponsivePie';
 
 /* organisms */
+export { CalorieInfo } from './organisms/CalorieInfo/CalorieInfo';
+export { DiaryList } from './organisms/DiaryList/DiaryList';
 export { Header } from './organisms/Header/Header';
 export { LoginForm } from './organisms/LoginForm/LoginForm';
 export { JoinForm } from './organisms/JoinForm/JoinForm';

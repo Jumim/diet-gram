@@ -1,0 +1,12 @@
+.nutrientsGraph {
+  width: 90%;
+  height: 400px;
+  margin-top: 25px;
+}
+
+@media (pointer: coarse) {
+  .nutrientsGraph {
+    width: 100%;
+    height: 40vh;
+  }
+}

@@ -2,11 +2,16 @@
 
 .MainTemplate {
   width: 100%;
-  padding: 0 240px;
   box-sizing: border-box;
 
   .MainContents {
+    display: flex;
+    flex-flow: row;
     width: 100%;
     background-color: $white;
+
+    > div {
+      width: 50%;
+    }
   }
 }

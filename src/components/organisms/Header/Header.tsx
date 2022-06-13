@@ -1,24 +1,21 @@
 import React from 'react';
 import './Header.scss';
-import {Title} from 'components';
 
 interface HeaderType {
-  left?: React.ReactNode | React.ReactNode[]
-  right?: React.ReactNode | React.ReactNode[]
-  text: string
+  children: React.ReactNode | React.ReactNode[]
 }
 
-export const Header: React.FC<HeaderType> = ({left, right, text}) => {
+export const Header = ({children}: HeaderType) => {
   return (
     <header>
-      <div className='h_left'>
-        {left}
+      <div className='HeaderLeft'>
+        로고
       </div>
-      <div className='h_center'>
-        <Title>{text}</Title>
+      <div className='HeaderCenter'>
+        {children}
       </div>
-      <div className='h_right'>
-        {right}
+      <div className='HeaderRight'>
+        마이페이지
       </div>
     </header>
   );
