@@ -9,7 +9,8 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_FB_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FB_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_FB_API_ID,
-  measurementId: process.env.REACT_APP_FB_MANAGERMENT_ID
+  measurementId: process.env.REACT_APP_FB_MANAGERMENT_ID,
+  databaseURL: process.env.REACT_APP_FB_DATABASE_URL,
 };
 
 export const app = initializeApp(firebaseConfig);

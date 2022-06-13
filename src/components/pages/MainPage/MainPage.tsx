@@ -1,9 +1,10 @@
 import { MainTemplate } from 'components';
+import { MainContainer } from 'containers';
 
-export const MainPage = () => {
+export const MainPage = ({ authenticated }: { authenticated: boolean }) => {
   return (
     <MainTemplate>
-      메인페이지
+      <MainContainer authenticated={authenticated} />
     </MainTemplate>
   )
 }

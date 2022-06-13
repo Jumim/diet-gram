@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -9,14 +11,23 @@ interface LoginFormType {
   password: string
 }
 
-export const LoginFormContainer = () => {
+export const LoginFormContainer = ({authenticated}: {authenticated: boolean}) => {
+  const navi = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormType>({
     resolver: yupResolver(userFormSchema)
   });
 
+  useEffect(() => {
+    if(authenticated) {
+      alert('이미 로그인 되어있습니다. 메인페이지로 이동합니다.');
+      navi('/');
+    }
+  }, []);
+
   const onSubmit: SubmitHandler<LoginFormType> = async (data: any) => {
     try {
       await login(data.email, data.password);
+      navi('/');
     } catch (error) {
       console.log(error);
     }
@@ -35,8 +46,6 @@ const userFormSchema = yup.object().shape({
   email: yup
     .string()
     .email()
-    .min(5, '이메일 5자 이상 10자 이하로 입력해주세요.')
-    .max(10, '이메일은 5자 이상 10자 이하로 입력해주세요.')
     .required('이메일을 입력해주세요.'),
   password: yup
     .string()

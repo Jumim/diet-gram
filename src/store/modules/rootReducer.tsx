@@ -8,6 +8,7 @@ import {persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import date from './date';
+import auth from './auth';
 
 const persistConfig = {
   key: 'root',
@@ -18,6 +19,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   date,
+  auth,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
