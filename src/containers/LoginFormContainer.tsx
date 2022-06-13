@@ -14,7 +14,7 @@ interface LoginFormType {
 export const LoginFormContainer = ({authenticated}: {authenticated: boolean}) => {
   const navi = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormType>({
-    resolver: yupResolver(userFormSchema)
+    resolver: yupResolver(loginFormSchema)
   });
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export const LoginFormContainer = ({authenticated}: {authenticated: boolean}) =>
   );
 }
 
-const userFormSchema = yup.object().shape({
+const loginFormSchema = yup.object().shape({
   email: yup
     .string()
     .email()

@@ -1,13 +1,9 @@
 .Modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 560px;
-  height: 80vh;
-  min-height: 680px;
-  margin: 80px auto;
   padding: 40px;
   box-sizing: border-box;
   box-shadow: 0 0px 999px 999px rgba(0, 0, 0, 0.3);
@@ -17,34 +13,9 @@
   .ModalArea{
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-
-    .ModalAreaTitle {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      box-sizing: border-box;
-      margin-bottom: 20px;
-
-      :nth-child(1) {
-        flex-basis: 365px;
-      }
-
-      :nth-child(2) {
-        flex-basis: 100px;
-      }
-    }
-
-    .ModalAreaContent {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
   }
 }
 
@@ -54,15 +25,6 @@
     padding: 30px;
 
     .ModalArea {
-      .ModalArea_Top{
-        :nth-child(1) {
-          flex-basis: 75%;
-        }
-
-        :nth-child(2) {
-          flex-basis: 25%;
-        }
-      }
     }
   }
 }

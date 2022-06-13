@@ -2,7 +2,7 @@ import './Text.scss';
 
 interface TextType {
   children: React.ReactNode
-  className: string
+  className?: string
 }
 
 export const Text= ({

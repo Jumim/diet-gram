@@ -5,18 +5,20 @@ export { Icon } from './atoms/Icon/Icon';
 export { Input } from './atoms/Input/Input';
 export { Label } from './atoms/Label/Label';
 export { Link } from './atoms/Link/Link';
+export { Modal } from './atoms/Modal/Modal';
 export { Text } from './atoms/Text/Text';
 export { Title } from './atoms/Title/Title';
 
 /* molecules */
 export { Form } from './molecules/Form/Form';
 export { InputArea } from './molecules/InputArea/InputArea';
-export {SelectArea} from './molecules/SelectArea/SelectArea';
+export { SelectArea } from './molecules/SelectArea/SelectArea';
 
 /* organisms */
 export { Header } from './organisms/Header/Header';
 export { LoginForm } from './organisms/LoginForm/LoginForm';
 export { JoinForm } from './organisms/JoinForm/JoinForm';
+export { UserModal } from './organisms/UserModal/UserModal';
 
 /* pages */
 export { JoinPage } from './pages/JoinPage/JoinPage';

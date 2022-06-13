@@ -4,14 +4,14 @@ interface authType {
 }
 
 // 타입 선언
-type userAction = ReturnType<typeof setUser>;
+type authAction = ReturnType<typeof setAuth>;
 
 // 액션 타입 지정
-const SET_USER = 'USER/SET_USER';
+const SET_AUTH = 'AUTH/SET_AUTH';
 
 // 액션 생성 함수 지정
-export const setUser = (result: boolean): {type: string; result: boolean} => ({
-  type: SET_USER,
+export const setAuth = (result: boolean): {type: string; result: boolean} => ({
+  type: SET_AUTH,
   result: result
 });
 
@@ -21,9 +21,9 @@ const initState: authType = {
 };
 
 // 리듀서
-const date = (state: authType = initState, action: userAction): authType => {
+const auth = (state: authType = initState, action: authAction): authType => {
   switch (action.type) {
-    case SET_USER:
+    case SET_AUTH:
       return {
         ...state,
         authenticated: action.result
@@ -33,4 +33,4 @@ const date = (state: authType = initState, action: userAction): authType => {
   }
 }
 
-export default date;
+export default auth;
