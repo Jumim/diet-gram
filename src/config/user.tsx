@@ -7,10 +7,16 @@ interface userType {
   calorie: number
 }
 
-export const getUserData = (uid: string) => {
-  return getDoc(doc(db, 'user', uid));
+export const getUserData = async (uid: string) => {
+  const user = await getDoc(doc(db, 'USER', uid));
+
+  if(user.exists()) {
+    return {state: true, data: user.data()};
+  } else {
+    return {state: false, data: null};
+  }
 }
 
 export const setUserData = (user: userType) => {
-  return setDoc(doc(db, 'user'), user);
+  return setDoc(doc(db, 'USER', user.uid), user);
 }

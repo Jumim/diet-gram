@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "config/firebase";
 import { useDispatch } from 'react-redux';
 import { setAuth } from 'store/modules/auth';
+import { getUserThunk } from 'store/modules/user';
 
 export const MainContainer = () => {
   const navi = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // 로그인 여부 확인
     auth.onAuthStateChanged((user) => {
       if(user) {
         const authData = {
@@ -16,6 +18,7 @@ export const MainContainer = () => {
           uid: user.uid
         }
 
+        dispatch(getUserThunk(user.uid));
         dispatch(setAuth(authData));
         navi('/');
       } else {

@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from 'store/modules/rootReducer';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -12,14 +14,16 @@ interface JoinFormType {
   passwordCheck: string
 }
 
-export const JoinFormContainer = ({authenticated}: {authenticated: boolean}) => {
+export const JoinFormContainer = () => {
   const navi = useNavigate();
+  const authData = useSelector((state: RootState) => state.auth);
+
   const { register, handleSubmit, formState: { errors } } = useForm<JoinFormType>({
     resolver: yupResolver(userFormSchema)
   });
 
   useEffect(() => {
-    if(authenticated) {
+    if(authData.authenticated) {
       alert('이미 로그인 되어있습니다. 메인페이지로 이동합니다.');
       navi('/');
     }

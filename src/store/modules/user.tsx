@@ -1,3 +1,5 @@
+import { getUserData, setUserData } from 'config/user';
+
 interface userType {
   uid: string
   name: string
@@ -16,19 +18,36 @@ export const setUser = (data: any): {type: string; data: userType} => ({
   data: data
 });
 
+export const getUserThunk = (uid: string): any => {
+  return async (dispatch: any) => {
+    try {
+      const user = await getUserData(uid);
+
+      if(user.state) {
+        dispatch(setUser(user.data));
+      }
+    } catch {
+      console.log('유저 정보 불러오기 실패');
+    }
+  }
+}
+
+export const setUserThunk = (user: userType): any => {
+  return async (dispatch: any) => {
+    try {
+      setUserData(user);
+      dispatch(setUser(user));
+    } catch {
+      console.log('유저 정보 저장하기 실패');
+    }
+  }
+}
+
 const initState: userType = {
   uid: '',
   name: '',
   calorie: 0
 };
-
-export const getUserData = () => async (dispatch: any) => {
-  try {
-
-  } catch {
-
-  }
-}
 
 // 리듀서
 const user = (state: userType = initState, action: userAction): userType => {
