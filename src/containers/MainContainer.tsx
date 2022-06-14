@@ -30,7 +30,7 @@ export const MainContainer = () => {
 
   return (
     <DiaryList
-
+      hanbleNavigation={() => navi('/write')}
     />
   )
 }

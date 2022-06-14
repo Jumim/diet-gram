@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
 import { setDate } from 'store/modules/date';
-import { Button, Header, Title } from 'components';
+import { Button, Header, Text } from 'components';
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 
 export const MainHeaderContainer = () => {
@@ -24,7 +24,7 @@ export const MainHeaderContainer = () => {
   return (
     <Header>
       <Button text={<AiOutlineDoubleLeft />} type='button' btnType='default' onClick={() => prevDay()} />
-      <Title>{date}</Title>
+      <Text size='regular'>{date}</Text>
       <Button text={<AiOutlineDoubleRight />} type='button' btnType='default' onClick={() => nextDay()} />
     </Header>
   )

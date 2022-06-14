@@ -2,14 +2,16 @@ import './Text.scss';
 
 interface TextType {
   children: React.ReactNode
-  className?: string
+  type?: 'default' | 'error'
+  size?: 'small' | 'regular' | 'large'
 }
 
 export const Text= ({
   children,
-  className = 'default'
+  type = 'default',
+  size = 'small'
 }: TextType) => {
   return (
-    <span className={className}>{children}</span>
+    <span className={[type, size].join(' ')}>{children}</span>
   );
 }

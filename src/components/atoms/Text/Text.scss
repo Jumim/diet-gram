@@ -1,12 +1,24 @@
 @import '_variable.scss';
 
 span {
-  font-size: 0.8em;
   letter-spacing: -1.2px;
   transform: skew(-0.03deg);
+  flex: none;
 
   &.error {
     color: $red;
+  }
+
+  &.small {
+    font-size: 0.8em;
+  }
+
+  &.regular {
+    font-size: 0.9em;
+  }
+
+  &.large {
+    font-size: 1.0em;
   }
 }
 

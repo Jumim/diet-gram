@@ -13,15 +13,15 @@ interface Diarytype {
 }
 
 interface DiaryListType {
-
+  hanbleNavigation: () => void
 }
 
 export const DiaryList = ({
-
+  hanbleNavigation
 }: DiaryListType) => {
   return (
     <div className='DiaryList rightContents'>
-      dds
+      <Button btnType='positive' type='button' text='다이어리 작성하기' onClick={hanbleNavigation}/>
     </div>
   );
 }

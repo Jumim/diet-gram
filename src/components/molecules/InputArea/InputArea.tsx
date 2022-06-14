@@ -18,7 +18,7 @@ export const InputArea = ({ label, error, ...props }: InputAreaProps) => {
       <Input
         {...props}
       />
-      <Text className='error'>{error}</Text>
+      <Text type='error'>{error}</Text>
     </div>
   );
 }
