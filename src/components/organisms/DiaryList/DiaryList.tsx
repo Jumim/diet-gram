@@ -13,15 +13,15 @@ interface Diarytype {
 }
 
 interface DiaryListType {
-  hanbleNavigation: () => void
+
 }
 
 export const DiaryList = ({
-  hanbleNavigation
+
 }: DiaryListType) => {
   return (
-    <div className='DiaryList'>
-      
+    <div className='DiaryList rightContents'>
+      dds
     </div>
   );
 }

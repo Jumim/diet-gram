@@ -1,4 +1,5 @@
 import { getUserData, setUserData } from 'config/user';
+import { setUserModal } from 'store/modules/userModal';
 
 interface userType {
   uid: string
@@ -25,6 +26,8 @@ export const getUserThunk = (uid: string): any => {
 
       if(user.state) {
         dispatch(setUser(user.data));
+      } else {
+        dispatch(setUserModal(true));
       }
     } catch {
       console.log('유저 정보 불러오기 실패');

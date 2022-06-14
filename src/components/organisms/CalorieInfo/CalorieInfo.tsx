@@ -13,7 +13,7 @@ interface CalorieInfoType {
 
 export const CalorieInfo = ({ userData, totalInfo }: CalorieInfoType) => {
   return (
-    <div className='CalorieInfo'>
+    <div className='CalorieInfo leftContents'>
       <div>
         <Text>{`${userData.name}님의 하루 칼로리`}</Text>
         <Text>{`${Math.floor(userData.calorie).toLocaleString()} kcal`}</Text>

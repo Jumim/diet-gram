@@ -2,14 +2,19 @@
 
 /* Header Style */
 header {
-  width: 100%;
-  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  width: 100%;
+  height: 50px;
   background-color: $rightgray;
   border-bottom: 1px solid $gray;
+  padding: 0 40px;
+  box-sizing: border-box;
 
   .HeaderLeft {
 
@@ -18,6 +23,8 @@ header {
   .HeaderCenter {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 25px;
   }
 
   .HeaderRight {

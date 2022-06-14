@@ -33,7 +33,7 @@ export const JoinFormContainer = () => {
     try {
       await join(data.email, data.password);
 
-      navi('/login');
+      navi('/');
     } catch (error) {
       console.log(error);
     }

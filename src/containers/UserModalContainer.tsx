@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
 import { setUserThunk } from 'store/modules/user';
+import { setUserModal } from 'store/modules/userModal';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -16,20 +16,13 @@ interface UserFormType {
 
 export const UserModalContainer = () => {
   const dispatch = useDispatch();
-  const [modal, setModal] = useState(false);
-  const user = useSelector((state: RootState) => state.user);
+
   const authData = useSelector((state: RootState) => state.auth);
+  const userModal = useSelector((state: RootState) => state.userModal);
+
   const { register, handleSubmit, formState: { errors } } = useForm<UserFormType>({
     resolver: yupResolver(userFormSchema)
   });
-
-  useEffect(() => {
-    if (user.name === '' || user.calorie === 0) {
-      setModal(true);
-    } else {
-      setModal(false);
-    }
-  }, [user.name, user.calorie]);
 
   const onSubmit: SubmitHandler<UserFormType> = (data: any) => {
     const daykcal = recommendedCalorie(data.height, data.activityLevel);
@@ -41,13 +34,13 @@ export const UserModalContainer = () => {
     };
 
     dispatch(setUserThunk(userInfo));
-    setModal(false);
+    setUserModal(false);
   }
 
   return (
     <>
       {
-        modal ?
+        userModal ?
           <UserModal
             onSubmit={handleSubmit(onSubmit)}
             register={register}
