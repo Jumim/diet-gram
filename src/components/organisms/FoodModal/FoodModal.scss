@@ -1,0 +1,14 @@
+.FoodModalTop {
+  display: flex;
+  flex-flow: row;
+}
+
+.FoodModalBottom {
+  height: 600px;
+
+  form {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+  }
+}

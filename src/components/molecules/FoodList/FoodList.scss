@@ -1,0 +1,18 @@
+.FoodList {
+  display: block;
+  height: 100%;
+  overflow-y: scroll;
+  text-align: center;
+
+  .FoodFeed {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 20px;
+
+    .nutrientsIconList {
+      display: flex;
+      gap: 10px;
+    }
+  }
+}

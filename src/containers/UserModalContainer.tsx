@@ -40,15 +40,13 @@ export const UserModalContainer = () => {
   return (
     <>
       {
-        userModal ?
+        userModal &&
           <UserModal
             onSubmit={handleSubmit(onSubmit)}
             register={register}
             errors={errors}
             activityLevelList={activityLevelList}
           />
-          :
-          <></>
       }
     </>
   )

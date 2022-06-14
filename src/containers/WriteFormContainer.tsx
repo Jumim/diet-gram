@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
-import { setFooddModal, removeFoodList } from 'store/modules';
+import { setFoodModal, removeFoodList } from 'store/modules';
 import { WriteFormType, FoodListType, DiaryListType } from 'types';
 import { WriteForm } from 'components';
 
@@ -72,7 +72,7 @@ export const WriteFormContainer = ({ originalData, isEdit }: WriteFormContainerT
       sortList={sortList}
       foodList={foodList}
       handleRemoveFoodList={(foodData: FoodListType) => dispatch(removeFoodList(foodData.NUM))}
-      handleFoodModal={() => dispatch(setFooddModal(true))}
+      handleFoodModal={() => dispatch(setFoodModal(true))}
       sortValue={isEdit ? originalData ?.sort : 'breakfast'}
     />
   );

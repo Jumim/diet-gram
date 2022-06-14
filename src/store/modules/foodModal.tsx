@@ -1,11 +1,11 @@
 // 타입 선언
-type foodModalAction = ReturnType<typeof setFooddModal>;
+type foodModalAction = ReturnType<typeof setFoodModal>;
 
 // 액션 타입 지정
 const SET_FOODMODAL = 'FOODMODAL/SET_FOODMODAL';
 
 // 액션 생성 함수 지정
-export const setFooddModal = (state: boolean): {type: string; state: boolean} => ({
+export const setFoodModal = (state: boolean): {type: string; state: boolean} => ({
   type: SET_FOODMODAL,
   state: state
 });
