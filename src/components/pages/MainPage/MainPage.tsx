@@ -1,9 +1,10 @@
 import { MainTemplate } from 'components';
-import { MainContainer, MainHeaderContainer } from 'containers';
+import { UserModalContainer, MainHeaderContainer, MainContainer } from 'containers';
 
 export const MainPage = () => {
   return (
     <MainTemplate header={<MainHeaderContainer />}>
+      <UserModalContainer />
       <MainContainer />
     </MainTemplate>
   )

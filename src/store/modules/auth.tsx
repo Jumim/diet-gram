@@ -1,6 +1,6 @@
 interface authType {
   authenticated: boolean
-  loading: boolean
+  uid: string
 }
 
 // 타입 선언
@@ -10,14 +10,14 @@ type authAction = ReturnType<typeof setAuth>;
 const SET_AUTH = 'AUTH/SET_AUTH';
 
 // 액션 생성 함수 지정
-export const setAuth = (result: boolean): {type: string; result: boolean} => ({
+export const setAuth = (result: authType): {type: string; result: authType} => ({
   type: SET_AUTH,
   result: result
 });
 
 const initState: authType = {
   authenticated: false,
-  loading: true
+  uid: ''
 };
 
 // 리듀서
@@ -26,7 +26,8 @@ const auth = (state: authType = initState, action: authAction): authType => {
     case SET_AUTH:
       return {
         ...state,
-        authenticated: action.result
+        authenticated: action.result.authenticated,
+        uid: action.result.uid
       };
     default:
       return state;

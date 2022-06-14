@@ -1,4 +1,5 @@
 interface userType {
+  uid: string
   name: string
   calorie: number
 }
@@ -10,15 +11,24 @@ type userAction = ReturnType<typeof setUser>;
 const SET_USER = 'USER/SET_USER';
 
 // 액션 생성 함수 지정
-export const setUser = (data: userType): {type: string; data: userType} => ({
+export const setUser = (data: any): {type: string; data: userType} => ({
   type: SET_USER,
   data: data
 });
 
 const initState: userType = {
+  uid: '',
   name: '',
   calorie: 0
 };
+
+export const getUserData = () => async (dispatch: any) => {
+  try {
+
+  } catch {
+
+  }
+}
 
 // 리듀서
 const user = (state: userType = initState, action: userAction): userType => {

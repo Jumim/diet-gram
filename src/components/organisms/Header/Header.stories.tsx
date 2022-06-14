@@ -10,7 +10,5 @@ const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  left: '<',
-  right: '>',
-  text: '2022.06.01',
+  children: '2022.06.01',
 };

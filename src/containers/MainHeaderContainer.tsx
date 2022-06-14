@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, setDate } from 'store';
+import { RootState } from 'store/modules/rootReducer';
+import { setDate } from 'store/modules/date';
 import { Button, Header, Title } from 'components';
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 
