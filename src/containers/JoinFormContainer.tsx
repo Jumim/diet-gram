@@ -27,6 +27,7 @@ export const JoinFormContainer = () => {
       alert('이미 로그인 되어있습니다. 메인페이지로 이동합니다.');
       navi('/');
     }
+  // eslint-disable-next-line
   }, []);
 
   const onSubmit: SubmitHandler<JoinFormType> = async (data: any) => {

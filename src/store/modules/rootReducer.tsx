@@ -10,8 +10,11 @@ import storage from "redux-persist/lib/storage";
 import date from './date';
 import auth from './auth';
 import user from './user';
-import userModal from './userModal';
 import diary from './diary';
+import foodList from './foodList';
+
+import userModal from './userModal';
+import foodModal from './foodModal';
 
 const persistConfig = {
   key: 'root',
@@ -25,7 +28,9 @@ const rootReducer = combineReducers({
   auth,
   user,
   userModal,
+  foodModal,
   diary,
+  foodList,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

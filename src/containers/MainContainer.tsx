@@ -26,6 +26,7 @@ export const MainContainer = () => {
         navi('/login');
       }
     });
+  // eslint-disable-next-line
   }, []);
 
   return (
