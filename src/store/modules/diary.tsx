@@ -1,5 +1,4 @@
 interface DiaryListType {
-  uid: string
   id: number
   date: string
   food: any
