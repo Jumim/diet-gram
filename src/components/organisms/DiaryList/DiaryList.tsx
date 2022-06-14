@@ -13,15 +13,32 @@ interface Diarytype {
 }
 
 interface DiaryListType {
-  hanbleNavigation: () => void
+  hanbleWrite1: () => void
+  hanbleWrite2: () => void
+  hanbleWrite3: () => void
+  hanbleWrite4: () => void
 }
 
 export const DiaryList = ({
-  hanbleNavigation
+  hanbleWrite1,
+  hanbleWrite2,
+  hanbleWrite3,
+  hanbleWrite4
 }: DiaryListType) => {
   return (
     <div className='DiaryList rightContents'>
-      <Button btnType='positive' type='button' text='다이어리 작성하기' onClick={hanbleNavigation}/>
+      <Feed className=''>
+        <Button btnType='positive' type='button' text='아침 작성하기' onClick={hanbleWrite1}/>
+      </Feed>
+      <Feed className=''>
+        <Button btnType='positive' type='button' text='점심 작성하기' onClick={hanbleWrite2}/>
+      </Feed>
+      <Feed className=''>
+        <Button btnType='positive' type='button' text='저녁 작성하기' onClick={hanbleWrite3}/>
+      </Feed>
+      <Feed className=''>
+        <Button btnType='positive' type='button' text='간식 작성하기' onClick={hanbleWrite4}/>
+      </Feed>
     </div>
   );
 }

@@ -1,11 +1,11 @@
 export interface UserFormType {
-  nickname: string
+  name: string
   age: number
   height: number
   activityLevel: string
 }
 
 export interface UserInfoType {
-  nickname: string
-  daykcal: number
+  name: string
+  calorie: number
 }

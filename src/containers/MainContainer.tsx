@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { auth } from "config/firebase";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store/modules/rootReducer';
 import { setAuth } from 'store/modules/auth';
 import { getUserThunk } from 'store/modules/user';
 import { DiaryList } from 'components';
@@ -9,6 +10,7 @@ import { DiaryList } from 'components';
 export const MainContainer = () => {
   const navi = useNavigate();
   const dispatch = useDispatch();
+  const date = useSelector((state: RootState) => state.date);
 
   useEffect(() => {
     // 로그인 여부 확인
@@ -31,7 +33,10 @@ export const MainContainer = () => {
 
   return (
     <DiaryList
-      hanbleNavigation={() => navi('/write')}
+      hanbleWrite1={() => navi(`/write/${date}/${'breakfast'}`)}
+      hanbleWrite2={() => navi(`/write/${date}/${'lunch'}`)}
+      hanbleWrite3={() => navi(`/write/${date}/${'dinner'}`)}
+      hanbleWrite4={() => navi(`/write/${date}/${'snack'}`)}
     />
   )
 }

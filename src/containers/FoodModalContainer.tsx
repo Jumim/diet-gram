@@ -6,10 +6,6 @@ import { RootState, setFoodModal, setFoodList } from 'store/modules';
 import { FoodModal } from 'components';
 import { FoodListType } from 'types';
 
-/*
-음식 리스트 페이징 추가
-*/
-
 export const FoodModalContainer = () => {
   var pageData = {
     startPage: 1,

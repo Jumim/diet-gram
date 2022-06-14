@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
@@ -12,30 +11,16 @@ interface WriteFormContainerType {
   isEdit?: boolean
 }
 
-export const WriteFormContainer = ({ originalData, isEdit }: WriteFormContainerType) => {
+export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
   const { register, handleSubmit } = useForm<WriteFormType>();
-  const dispatch = useDispatch();
+
   const navi = useNavigate();
-  const newId = useRef(0);
+  const params = useParams();
 
-  const date = useSelector((state: RootState) => state.date);
+  const dispatch = useDispatch();
   const foodList = useSelector((state: RootState) => state.foodList);
-  const localData = useSelector((state: RootState) => state.diary);
-
-  useEffect(() => {
-    if (isEdit) {
-      newId.current = originalData!.id;
-      //dispatch(initFoodList(originalData!.food));
-    } else {
-      if (Object.keys(localData).length !== 0) {
-        newId.current = localData[0].id + 1;
-      }
-    }
-    // eslint-disable-next-line
-  }, [isEdit]);
 
   const onSubmit: SubmitHandler<WriteFormType> = (data) => {
-
     if(foodList.length === 0) {
       alert('음식을 한 개 이상 추가해주세요.');
     } else {
@@ -43,7 +28,6 @@ export const WriteFormContainer = ({ originalData, isEdit }: WriteFormContainerT
 
       const diaryItem = {
         ...data,
-        id: newId.current,
         food: foodList,
         totalCal: totalInfo[0],
         totalCarbs: totalInfo[1],
@@ -51,13 +35,14 @@ export const WriteFormContainer = ({ originalData, isEdit }: WriteFormContainerT
         totalFat: totalInfo[3]
       };
 
-      console.log('diaryItem >> ' +diaryItem);
+      console.log('diaryItem >> ' +JSON.stringify(diaryItem));
 
       if (isEdit) {
+        // 수정
         //dispatch(editDiaryList(diaryItem));
       } else {
+        // 추가
         //dispatch(setDiaryList(diaryItem));
-        newId.current += 1;
       }
 
       navi('/', { replace: true });
@@ -68,12 +53,12 @@ export const WriteFormContainer = ({ originalData, isEdit }: WriteFormContainerT
     <WriteForm
       onSubmit={handleSubmit(onSubmit)}
       register={register}
-      date={date}
+      date={params.date}
       sortList={sortList}
       foodList={foodList}
       handleRemoveFoodList={(foodData: FoodListType) => dispatch(removeFoodList(foodData.NUM))}
       handleFoodModal={() => dispatch(setFoodModal(true))}
-      sortValue={isEdit ? originalData ?.sort : 'breakfast'}
+      sortValue={params.sort}
     />
   );
 }

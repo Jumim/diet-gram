@@ -1,8 +1,7 @@
 export interface DiaryListType {
-  id: number
   date: string
-  food: any
   sort: string
+  food: any
   totalCal: number
   totalCarbs: number
   totalProtain: number
