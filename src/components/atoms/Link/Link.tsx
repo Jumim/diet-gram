@@ -4,12 +4,17 @@ import './Link.scss';
 interface LinkProps {
   to: string
   children: React.ReactNode | React.ReactNode[]
+  type?: 'line' | 'none'
 }
 
-export const Link = ({to, children}: LinkProps) => {
+export const Link = ({
+  to,
+  children,
+  type = 'line'
+}: LinkProps) => {
   return (
     <RouterLink to={to}>
-      <span>{children}</span>
+      <span className={type}>{children}</span>
     </RouterLink>
   )
 }

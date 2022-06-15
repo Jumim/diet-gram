@@ -9,11 +9,12 @@ a {
   text-decoration: none;
 
   span {
+    display: inline-block;
     position: relative;
     padding: 0 5px;
     font-size: 0.65em;
 
-    &:before {
+    &.line:before {
       content: '';
       position: absolute;
       width: 100%;
@@ -27,7 +28,7 @@ a {
       transition: transform 0.3s ease-in-out;
     }
 
-    &:hover:before {
+    &.line:hover:before {
       transform-origin: left;
       transform: scaleX(1);
     }

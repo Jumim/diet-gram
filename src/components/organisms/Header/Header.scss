@@ -13,21 +13,32 @@ header {
   height: 50px;
   background-color: $rightgray;
   border-bottom: 1px solid $gray;
-  padding: 0 40px;
+  padding: 0 280px;
   box-sizing: border-box;
 
-  .HeaderLeft {
-
-  }
-
-  .HeaderCenter {
+  > div {
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 33.3%;
+  }
+
+  .HeaderLeft {
+    justify-content: flex-start;
+    padding-top: 5px;
+
+    img {
+      width: 120px;
+    }
+  }
+
+  .HeaderCenter {
+    justify-content: center;
     gap: 25px;
   }
 
   .HeaderRight {
-
+    justify-content: flex-end;
+    cursor: pointer;
   }
 }
