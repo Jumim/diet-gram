@@ -9,6 +9,7 @@ interface InputAreaProps {
   register: any
   defaultValue?: string | number | undefined
   placeholder?: string | undefined
+  readOnly?: boolean
 }
 
 export const InputArea = ({ label, error, ...props }: InputAreaProps) => {

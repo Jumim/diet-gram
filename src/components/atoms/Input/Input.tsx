@@ -6,6 +6,7 @@ interface InputType {
   register?: any
   defaultValue?: string | number | undefined
   placeholder?: string | undefined
+  readOnly?: boolean
 }
 
 export const Input = ({ register, name, ...props }: InputType) => {

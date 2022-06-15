@@ -5,4 +5,4 @@ export { initFoodList, removeFoodList, resetFoodList, setFoodList } from './food
 export { type RootState } from './rootReducer';
 export { getUserThunk, setUser, setUserThunk } from './user';
 export { setUserModal } from './userModal';
-export { editDiaryList, removeDiaryList, setDiaryList } from './diary';
+export { editDiaryList, removeDiaryList, setDiaryList, getDiaryDataThunk, setDiaryDataThunk } from './diary';

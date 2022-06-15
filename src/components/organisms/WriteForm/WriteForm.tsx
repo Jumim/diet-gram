@@ -7,7 +7,6 @@ interface WriteFormProps {
   date: any
   foodList: any
   register: any
-  sortList: any
   sortValue: string | undefined
   handleRemoveFoodList: (foodData: FoodListType) => void
   handleFoodModal: () => void
@@ -18,7 +17,6 @@ export const WriteForm = ({
   date,
   foodList,
   register,
-  sortList,
   sortValue,
   handleRemoveFoodList,
   handleFoodModal
@@ -32,12 +30,13 @@ export const WriteForm = ({
         register={register}
         defaultValue={moment(date).format('YYYY-MM-DD')}
       />
-      <SelectArea
+      <InputArea
         label='구분'
         name='sort'
+        type='string'
         register={register}
-        item={sortList}
         defaultValue={sortValue}
+        readOnly={true}
       />
       { foodList.length > 0 && <FoodList data={foodList} btnText='삭제' onClick={handleRemoveFoodList} /> }
       <Button btnType='positive' type='button' text='음식 추가하기' onClick={handleFoodModal} />

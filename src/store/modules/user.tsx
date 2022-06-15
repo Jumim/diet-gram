@@ -27,6 +27,7 @@ export const getUserThunk = (uid: string): any => {
       if(user.state) {
         dispatch(setUser(user.data));
       } else {
+        // 저장 되어 있는 유저 정보가 없다면 유저 폼 모달 보여주기
         dispatch(setUserModal(true));
       }
     } catch {
@@ -38,8 +39,12 @@ export const getUserThunk = (uid: string): any => {
 export const setUserThunk = (user: userType): any => {
   return async (dispatch: any) => {
     try {
-      setUserData(user);
-      dispatch(setUser(user));
+      setUserData(user).then(() => {
+        dispatch(setUser(user));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     } catch {
       console.log('유저 정보 저장하기 실패');
     }

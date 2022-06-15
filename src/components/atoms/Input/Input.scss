@@ -15,6 +15,10 @@ input {
     border: 2px solid $blue;
     outline: none;
   }
+
+  &:read-only {
+    background-color: $rightgray;
+  }
 }
 
 @media (pointer: coarse) {
