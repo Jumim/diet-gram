@@ -28,7 +28,6 @@ export const FoodModalContainer = () => {
   }, [inView]);
 
   const onSubmit: SubmitHandler<any> = (data) => {
-    console.log(data);
     if (data.selectText === '' || data.selectText === undefined) {
       alert('검색어를 입력해주세요.');
     } else {
