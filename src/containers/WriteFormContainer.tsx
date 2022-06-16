@@ -3,12 +3,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
-import { setFoodModal, removeFoodList, setDiaryDataThunk, resetFoodList } from 'store/modules';
-import { WriteFormType, FoodListType, DiaryListType, DiaryItemProps } from 'types';
+import { setFoodModal, removeFoodList, setDiaryDataThunk, resetFoodList, initFoodList } from 'store/modules';
+import { WriteFormType, FoodListType, DiaryItemProps } from 'types';
 import { WriteForm } from 'components';
 
 interface WriteFormContainerType {
-  originalData?: DiaryListType
   isEdit?: boolean
 }
 
@@ -21,10 +20,16 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
   const dispatch = useDispatch();
   const auth = useSelector((state: RootState) => state.auth);
   const foodList = useSelector((state: RootState) => state.foodList);
+  const date = useSelector((state: RootState) => state.date);
+  const diary = useSelector((state: RootState) => state.diary);
 
   useEffect(() => {
-    dispatch(resetFoodList());
-  }, []);
+    if(isEdit) {
+      dispatch(initFoodList(diary[params.sort ? params.sort : '']['food']));
+    } else {
+      dispatch(resetFoodList());
+    }
+  }, [isEdit]);
 
   const onSubmit: SubmitHandler<WriteFormType> = (data) => {
     if (foodList.length === 0) {
@@ -51,13 +56,12 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
 
       if (isEdit) {
         // 수정
-        //dispatch(editDiaryList(diaryItem));
+        dispatch(setDiaryDataThunk(diaryItem));
       } else {
         // 추가
         dispatch(setDiaryDataThunk(diaryItem));
       }
 
-      dispatch(resetFoodList());
       navi('/', { replace: true });
     }
   }
@@ -66,7 +70,7 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
     <WriteForm
       onSubmit={handleSubmit(onSubmit)}
       register={register}
-      date={params.date}
+      date={date}
       foodList={foodList}
       handleRemoveFoodList={(foodData: FoodListType) => dispatch(removeFoodList(foodData.NUM))}
       handleFoodModal={() => dispatch(setFoodModal(true))}

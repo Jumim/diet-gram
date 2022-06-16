@@ -33,6 +33,7 @@ export { JoinPage } from './pages/JoinPage/JoinPage';
 export { LoginPage } from './pages/LoginPage/LoginPage';
 export { MainPage } from './pages/MainPage/MainPage';
 export { WritePage } from './pages/WritePage/WritePage';
+export { EditPage } from './pages/EditPage/EditPage';
 
 /* templetes */
 export { DefaultTemplate } from './templetes/DefaultTemplate/DefaultTemplate';

@@ -67,6 +67,7 @@ export const MainContainer = () => {
         lunchData={diary.lunch}
         dinnerData={diary.dinner}
         snackData={diary.snack}
+        navi={navi}
         hanbleWrite1={() => navi(`/write/breakfast`)}
         hanbleWrite2={() => navi(`/write/lunch`)}
         hanbleWrite3={() => navi(`/write/dinner`)}
