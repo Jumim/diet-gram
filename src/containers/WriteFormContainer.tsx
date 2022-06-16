@@ -19,9 +19,9 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
 
   const dispatch = useDispatch();
   const auth = useSelector((state: RootState) => state.auth);
-  const foodList = useSelector((state: RootState) => state.foodList);
   const date = useSelector((state: RootState) => state.date);
   const diary = useSelector((state: RootState) => state.diary);
+  const foodList = useSelector((state: RootState) => state.foodList);
 
   useEffect(() => {
     if(isEdit) {
@@ -29,6 +29,7 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
     } else {
       dispatch(resetFoodList());
     }
+  // eslint-disable-next-line
   }, [isEdit]);
 
   const onSubmit: SubmitHandler<WriteFormType> = (data) => {
@@ -40,10 +41,11 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
       const diaryItem: DiaryItemProps = {
         uid: auth.uid,
         date: data.date,
-        sort: params.sort ? params.sort : 'breakfast',
+        sort: params.sort ? params.sort : '',
         data: {
           date: data.date,
-          sort: params.sort ? params.sort : 'breakfast',
+          sort: params.sort ? params.sort : '',
+          sortText: data.sort,
           food: foodList,
           totalCal: totalInfo[0],
           totalCarbs: totalInfo[1],
@@ -52,16 +54,7 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
         }
       };
 
-      console.log(diaryItem);
-
-      if (isEdit) {
-        // 수정
-        dispatch(setDiaryDataThunk(diaryItem));
-      } else {
-        // 추가
-        dispatch(setDiaryDataThunk(diaryItem));
-      }
-
+      dispatch(setDiaryDataThunk(diaryItem));
       navi('/', { replace: true });
     }
   }
@@ -74,7 +67,7 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
       foodList={foodList}
       handleRemoveFoodList={(foodData: FoodListType) => dispatch(removeFoodList(foodData.NUM))}
       handleFoodModal={() => dispatch(setFoodModal(true))}
-      sortValue={getSortValue(params.sort)}
+      sortValue={getSortText(params.sort)}
     />
   );
 }
@@ -96,7 +89,7 @@ const totalCalInfo = (foodList: FoodListType[]) => {
   return [totalCal, totalCarbs, totalProtain, totalFat];
 }
 
-const getSortValue = (sort: string | undefined) => {
+const getSortText = (sort: string | undefined) => {
   switch (sort) {
     case 'breakfast':
       return '아침';

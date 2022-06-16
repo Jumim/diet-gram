@@ -10,17 +10,17 @@ export interface DiaryDataType {
   lunch: DiaryListType,
   dinner: DiaryListType,
   snack: DiaryListType,
-  calorieInfo: any
 }
 
 export interface DiaryListType {
-  date: string
+  date?: string
   sort: string
-  food: any
-  totalCal: number
-  totalCarbs: number
-  totalProtain: number
-  totalFat: number
+  sortText: string
+  food?: any
+  totalCal?: number
+  totalCarbs?: number
+  totalProtain?: number
+  totalFat?: number
 }
 
 export interface FoodListType {
