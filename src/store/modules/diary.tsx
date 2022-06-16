@@ -5,34 +5,27 @@ import { DiaryItemProps, DiaryDataType } from 'types';
 // ReturnType <typeof > 는 특정 함수의 타입을 추론함.
 type diaryAction = ReturnType<typeof setDiaryList>
   | ReturnType<typeof removeDiaryList>
-  | ReturnType<typeof editDiaryList>
   | ReturnType<typeof initDiaryList>;
 
 // 액션 타입 지정
 const SET_DIARYLIST = 'DIARY/SET_DIARY' as const;
 const INIT_DIARYLIST = 'DIARY/INIT_DIARYLIST' as const;
 const REMOVE_DIARYLIST = 'DIARY/REMOVE_DIARYLIST' as const;
-const EDIT_DIARYLIST = 'DIARY/EDIT_DIARYLIST' as const;
 
 // 액션 생성 함수 지정
-export const setDiaryList = (diaryItem: any) => ({
+export const setDiaryList = (payload: any) => ({
   type: SET_DIARYLIST,
-  diaryItem: diaryItem
+  payload: payload
 });
 
-export const initDiaryList = (diaryItem: any) => ({
+export const initDiaryList = (payload: any) => ({
   type: INIT_DIARYLIST,
-  diaryItem: diaryItem
+  payload: payload
 });
 
-export const removeDiaryList = (diaryItem: any) => ({
+export const removeDiaryList = (payload: any) => ({
   type: REMOVE_DIARYLIST,
-  diaryItem: diaryItem
-});
-
-export const editDiaryList = (diaryItem: any) => ({
-  type: EDIT_DIARYLIST,
-  diaryItem: diaryItem
+  payload: payload
 });
 
 export const getDiaryDataThunk = (diaryItem: any): any => {
@@ -125,22 +118,16 @@ const initState: DiaryDataType = {
 const diary = (state: DiaryDataType = initState, action: diaryAction): any => {
   switch (action.type) {
     case INIT_DIARYLIST:
-      return state = action.diaryItem;
+      return state = action.payload;
     case SET_DIARYLIST:
       return {
         ...state,
-        [action.diaryItem.sort]: action.diaryItem.data
+        [action.payload.sort]: action.payload.data
       };
     case REMOVE_DIARYLIST:
-    console.log(action.diaryItem);
       return {
         ...state,
-        [action.diaryItem]: []
-      };
-    case EDIT_DIARYLIST:
-      return {
-        ...state,
-        [action.diaryItem.sort]: action.diaryItem.data
+        [action.payload]: []
       };
     default:
       return state;

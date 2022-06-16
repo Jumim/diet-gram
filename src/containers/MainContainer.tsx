@@ -52,11 +52,44 @@ export const MainContainer = () => {
     dispatch(deleteDiaryDataThunk(diaryItem));
   }
 
+  const totalInfo = () => {
+    var totalCalorie = 0;
+    var totalCarbs = 0;
+    var totalProtain = 0;
+    var totalFat = 0;
+
+    console.log('칼로리 정보');  // 3번씩 렌더링 되는거 수정
+
+    Object.values(diary).forEach((data: any) => {
+      totalCalorie += (data.totalCal === undefined ? 0 : data.totalCal)
+      totalCarbs += (data.totalCarbs === undefined ? 0 : data.totalCarbs)
+      totalProtain += (data.totalProtain === undefined ? 0 : data.totalProtain)
+      totalFat += (data.totalFat === undefined ? 0 : data.totalFat)
+    });
+
+    const totalData = [
+      {
+        id: '탄수화물(g)',
+        value: totalCarbs
+      },
+      {
+        id: '단백질(g)',
+        value: totalProtain
+      },
+      {
+        id: '지방(g)',
+        value: totalFat
+      }
+    ];
+
+    return [totalCalorie, totalData];
+  }
+
   return (
     <>
       <CalorieInfo
         userData={userData}
-        totalInfo={diary.calorieInfo}
+        totalInfo={totalInfo()}
       />
       <DiaryList
         diary={diary}
