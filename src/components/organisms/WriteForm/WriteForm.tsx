@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Form, InputArea, Button, SelectArea, FoodList } from 'components';
+import { Form, InputArea, Button, FoodList } from 'components';
 import { FoodListType } from 'types';
 
 interface WriteFormProps {

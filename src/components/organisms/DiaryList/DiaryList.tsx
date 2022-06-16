@@ -1,17 +1,6 @@
 import { Feed, Icon, IconList, Text, Button } from 'components';
 import './DiaryList.scss';
 
-interface Diarytype {
-  id: number
-  date: string
-  food: any
-  sort: string
-  totalCal: number
-  totalCarbs: number
-  totalProtain: number
-  totalFat: number
-}
-
 interface DiaryListType {
   breakfastData: any
   lunchData: any
@@ -21,6 +10,7 @@ interface DiaryListType {
   hanbleWrite2: () => void
   hanbleWrite3: () => void
   hanbleWrite4: () => void
+  deleteDiaryItem: (sort: string) => void
 }
 
 export const DiaryList = ({
@@ -31,7 +21,8 @@ export const DiaryList = ({
   hanbleWrite1,
   hanbleWrite2,
   hanbleWrite3,
-  hanbleWrite4
+  hanbleWrite4,
+  deleteDiaryItem
 }: DiaryListType) => {
   return (
     <div className='DiaryList rightContents'>
@@ -44,11 +35,11 @@ export const DiaryList = ({
             </>
             :
             <>
-              <Icon type='Breakfast' text={breakfastData.sort} />
+              <Icon type='Breakfast' text={'아침'} />
               <IconList data={breakfastData.food} />
               <div className='ButtonArea'>
-                <Button btnType='positive' type='button' text='수정' onClick={() => { }} />
-                <Button btnType='negative' type='button' text='삭제' onClick={() => { }} />
+                <Button btnType='positive' type='button' text='수정' onClick={hanbleWrite1} />
+                <Button btnType='negative' type='button' text='삭제' onClick={() => deleteDiaryItem('breakfast')} />
               </div>
             </>
         }
@@ -62,11 +53,11 @@ export const DiaryList = ({
             </>
             :
             <>
-              <Icon type='Breakfast' text={lunchData.sort} />
+              <Icon type='Lunch' text={'점심'} />
               <IconList data={lunchData.food} />
               <div className='ButtonArea'>
-                <Button btnType='positive' type='button' text='수정' onClick={() => { }} />
-                <Button btnType='negative' type='button' text='삭제' onClick={() => { }} />
+                <Button btnType='positive' type='button' text='수정' onClick={hanbleWrite2} />
+                <Button btnType='negative' type='button' text='삭제' onClick={() => deleteDiaryItem('lunch')} />
               </div>
             </>
         }
@@ -80,11 +71,11 @@ export const DiaryList = ({
             </>
             :
             <>
-              <Icon type='Breakfast' text={dinnerData.sort} />
+              <Icon type='Dinner' text={'저녁'} />
               <IconList data={dinnerData.food} />
               <div className='ButtonArea'>
-                <Button btnType='positive' type='button' text='수정' onClick={() => { }} />
-                <Button btnType='negative' type='button' text='삭제' onClick={() => { }} />
+                <Button btnType='positive' type='button' text='수정' onClick={hanbleWrite3} />
+                <Button btnType='negative' type='button' text='삭제' onClick={() => deleteDiaryItem('dinner')} />
               </div>
             </>
         }
@@ -98,11 +89,11 @@ export const DiaryList = ({
             </>
             :
             <>
-              <Icon type='Breakfast' text={snackData.sort} />
+              <Icon type='Snack' text={'간식'} />
               <IconList data={snackData.food} />
               <div className='ButtonArea'>
-                <Button btnType='positive' type='button' text='수정' onClick={() => { }} />
-                <Button btnType='negative' type='button' text='삭제' onClick={() => { }} />
+                <Button btnType='positive' type='button' text='수정' onClick={hanbleWrite4} />
+                <Button btnType='negative' type='button' text='삭제' onClick={() => deleteDiaryItem('snack')} />
               </div>
             </>
         }

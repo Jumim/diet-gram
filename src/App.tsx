@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<MainPage />} />
-        <Route path='/write/:date/:sort' element={<WritePage />} />
+        <Route path='/write/:sort' element={<WritePage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/join' element={<JoinPage />} />
       </Routes>

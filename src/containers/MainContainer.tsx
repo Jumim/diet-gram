@@ -1,10 +1,11 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { auth } from "config/firebase";
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
-import { setAuth, getUserThunk, getDiaryDataThunk } from 'store/modules';
+import { setAuth, getUserThunk, getDiaryDataThunk, deleteDiaryDataThunk } from 'store/modules';
 import { DiaryList, CalorieInfo } from 'components';
+import { DiaryItemProps } from 'types';
 
 export const MainContainer = () => {
   const navi = useNavigate();
@@ -45,6 +46,16 @@ export const MainContainer = () => {
     }
   }, [date]);
 
+  const deleteDiaryItem = (sort: string) => {
+    const diaryItem: DiaryItemProps = {
+      uid: userData.uid,
+      date: date,
+      sort: sort,
+    };
+
+    dispatch(deleteDiaryDataThunk(diaryItem));
+  }
+
   return (
     <>
       <CalorieInfo
@@ -56,10 +67,11 @@ export const MainContainer = () => {
         lunchData={diary.lunch}
         dinnerData={diary.dinner}
         snackData={diary.snack}
-        hanbleWrite1={() => navi(`/write/${date}/${'아침'}`)}
-        hanbleWrite2={() => navi(`/write/${date}/${'점심'}`)}
-        hanbleWrite3={() => navi(`/write/${date}/${'저녁'}`)}
-        hanbleWrite4={() => navi(`/write/${date}/${'간식'}`)}
+        hanbleWrite1={() => navi(`/write/breakfast`)}
+        hanbleWrite2={() => navi(`/write/lunch`)}
+        hanbleWrite3={() => navi(`/write/dinner`)}
+        hanbleWrite4={() => navi(`/write/snack`)}
+        deleteDiaryItem={deleteDiaryItem}
       />
     </>
   )

@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
-import { setFoodModal, removeFoodList, setDiaryDataThunk } from 'store/modules';
+import { setFoodModal, removeFoodList, setDiaryDataThunk, resetFoodList } from 'store/modules';
 import { WriteFormType, FoodListType, DiaryListType, DiaryItemProps } from 'types';
 import { WriteForm } from 'components';
 
@@ -21,19 +22,23 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
   const auth = useSelector((state: RootState) => state.auth);
   const foodList = useSelector((state: RootState) => state.foodList);
 
+  useEffect(() => {
+    dispatch(resetFoodList());
+  }, []);
+
   const onSubmit: SubmitHandler<WriteFormType> = (data) => {
     if (foodList.length === 0) {
       alert('음식을 한 개 이상 추가해주세요.');
     } else {
       const totalInfo = totalCalInfo(foodList);
 
-      const diaryItem: any = {
+      const diaryItem: DiaryItemProps = {
         uid: auth.uid,
-        date: params.date,
-        sort: params.sort,
+        date: data.date,
+        sort: params.sort ? params.sort : 'breakfast',
         data: {
-          date: params.date,
-          sort: params.sort,
+          date: data.date,
+          sort: params.sort ? params.sort : 'breakfast',
           food: foodList,
           totalCal: totalInfo[0],
           totalCarbs: totalInfo[1],
@@ -42,7 +47,7 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
         }
       };
 
-      console.log('diaryItem >> ' + JSON.stringify(diaryItem));
+      console.log(diaryItem);
 
       if (isEdit) {
         // 수정
@@ -52,6 +57,7 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
         dispatch(setDiaryDataThunk(diaryItem));
       }
 
+      dispatch(resetFoodList());
       navi('/', { replace: true });
     }
   }
@@ -64,7 +70,7 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
       foodList={foodList}
       handleRemoveFoodList={(foodData: FoodListType) => dispatch(removeFoodList(foodData.NUM))}
       handleFoodModal={() => dispatch(setFoodModal(true))}
-      sortValue={params.sort}
+      sortValue={getSortValue(params.sort)}
     />
   );
 }
@@ -84,4 +90,19 @@ const totalCalInfo = (foodList: FoodListType[]) => {
   });
 
   return [totalCal, totalCarbs, totalProtain, totalFat];
+}
+
+const getSortValue = (sort: string | undefined) => {
+  switch (sort) {
+    case 'breakfast':
+      return '아침';
+    case 'lunch':
+      return '점심';
+    case 'dinner':
+      return '저녁';
+    case 'snack':
+      return '간식';
+    default:
+      return 'breakfast';
+  }
 }

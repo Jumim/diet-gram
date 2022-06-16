@@ -1,4 +1,4 @@
-import { getDiaryData, setDiaryData, deleteDiaryData, getDiaryList } from 'config/diary';
+import { getDiaryData, setDiaryData, deleteDiaryData } from 'config/diary';
 import { DiaryItemProps, DiaryListType, DiaryDataType } from 'types';
 
 // 타입 선언
@@ -42,10 +42,10 @@ export const getDiaryDataThunk = (diaryItem: any): any => {
 
       if (diary.state) {
         const newData = {
-          breakfast: diary.data.find((data) => data.sort === '아침'),
-          lunch: diary.data.find((data) => data.sort === '점심'),
-          dinner: diary.data.find((data) => data.sort === '저녁'),
-          snack: diary.data.find((data) => data.sort === '간식'),
+          breakfast: diary.data.find((data) => data.sort === 'breakfast'),
+          lunch: diary.data.find((data) => data.sort === 'lunch'),
+          dinner: diary.data.find((data) => data.sort === 'dinner'),
+          snack: diary.data.find((data) => data.sort === 'snack'),
           calorieInfo: diary.data.find((data) => data.sort === 'calorieInfo')
         }
 
@@ -72,13 +72,29 @@ export const setDiaryDataThunk = (diaryItem: DiaryItemProps): any => {
     try {
       setDiaryData(diaryItem)
         .then(() => {
-          dispatch(setDiaryList(diaryItem.data));
+          dispatch(setDiaryList({[diaryItem.sort]: diaryItem.data}));
         })
         .catch((err) => {
           console.log(err);
         });
     } catch {
       console.log('다이어리 정보 저장하기 실패');
+    }
+  }
+}
+
+export const deleteDiaryDataThunk = (diaryItem: DiaryItemProps): any => {
+  return async (dispatch: any) => {
+    try {
+      deleteDiaryData(diaryItem)
+        .then(() => {
+          dispatch(removeDiaryList(diaryItem.sort));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch {
+      console.log('다이어리 정보 삭제하기 실패');
     }
   }
 }
@@ -93,16 +109,19 @@ const diary = (state: DiaryDataType[] = initState, action: diaryAction): any => 
     case SET_DIARYLIST:
       return [
         ...state,
-        action.diaryItem
+        {[action.diaryItem.sort]: action.diaryItem.data}
       ];
     case REMOVE_DIARYLIST:
-      return state.filter((data) => data !== action.diaryItem);
+    console.log(action.diaryItem);
+      return {
+        ...state,
+        [action.diaryItem]: []
+      };
     case EDIT_DIARYLIST:
-      return state.map((el: any) =>
-        (el.sort === action.diaryItem.sort) ?
-          { ...action.diaryItem }
-          : el
-      );
+      return [
+        ...state,
+        {[action.diaryItem.sort]: action.diaryItem.data}
+      ];
     default:
       return state;
   }

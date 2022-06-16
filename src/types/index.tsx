@@ -9,7 +9,8 @@ export interface DiaryDataType {
   breakfast: DiaryListType,
   lunch: DiaryListType,
   dinner: DiaryListType,
-  snack: DiaryListType
+  snack: DiaryListType,
+  calorieInfo: any
 }
 
 export interface DiaryListType {
