@@ -1,40 +1,40 @@
 @import '_variable.scss';
 
-.Icon_breakfast, .Icon_lunch, .Icon_dinner, .Icon_snack {
+.IconBreakfast, .IconLunch, .IconDinner, .IconSnack {
   display: flex;
   align-items: center;
   width: fit-content;
   height: 20px;
-  font-size: 0.9em;
+  font-size: 0.8em;
   text-align: center;
   color: $white;
   border-radius: 6px;
   border: 1px solid $rightgray;
   padding: 5px 10px;
 
-  &.Icon_breakfast {
+  &.IconBreakfast {
     background-color: $yellow;
   }
 
-  &.Icon_lunch {
+  &.IconLunch {
     background-color: $green;
   }
 
-  &.Icon_dinner {
+  &.IconDinner {
     background-color: $blue;
   }
 
-  &.Icon_snack {
+  &.IconSnack {
     background-color: $darkgray;
   }
 }
 
-.Icon_default {
+.IconDefault {
   display: flex;
   align-items: center;
   width: fit-content;
   height: 20px;
-  font-size: 0.9em;
+  font-size: 0.8em;
   text-align: center;
   color: $darkgray;
   background-color: $white;

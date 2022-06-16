@@ -6,7 +6,7 @@ export const IconList = ({data}: {data: any}) => {
     <div className='IconList'>
       {
         data.map((item: any, i: number) =>
-          <Icon type='default' text={item.DESC_KOR} key={`IconList_${item.DESC_KOR}_${i}`} />
+          <Icon type='Default' text={item.DESC_KOR} key={`IconList_${item.DESC_KOR}_${i}`} />
         )
       }
     </div>

@@ -1,5 +1,5 @@
 import { getDiaryData, setDiaryData, deleteDiaryData, getDiaryList } from 'config/diary';
-import { DiaryItemProps, DiaryListType } from 'types';
+import { DiaryItemProps, DiaryListType, DiaryDataType } from 'types';
 
 // 타입 선언
 // ReturnType <typeof > 는 특정 함수의 타입을 추론함.
@@ -41,9 +41,25 @@ export const getDiaryDataThunk = (diaryItem: any): any => {
       const diary = await getDiaryData(diaryItem);
 
       if (diary.state) {
-        dispatch(initDiaryList(diary.data));
+        const newData = {
+          breakfast: diary.data.find((data) => data.sort === '아침'),
+          lunch: diary.data.find((data) => data.sort === '점심'),
+          dinner: diary.data.find((data) => data.sort === '저녁'),
+          snack: diary.data.find((data) => data.sort === '간식'),
+          calorieInfo: diary.data.find((data) => data.sort === 'calorieInfo')
+        }
+
+        dispatch(initDiaryList(newData));
       } else {
-        console.log('다이어리 정보 불러오기 실패');
+        const newData = {
+          breakfast: [],
+          lunch: [],
+          dinner: [],
+          snack: [],
+          calorieInfo: []
+        }
+
+        dispatch(initDiaryList(newData));
       }
     } catch {
       console.log('다이어리 정보 불러오기 실패');
@@ -67,10 +83,10 @@ export const setDiaryDataThunk = (diaryItem: DiaryItemProps): any => {
   }
 }
 
-const initState: DiaryListType[] = [];
+const initState: DiaryDataType[] = [];
 
 // 리듀서
-const diary = (state: DiaryListType[] = initState, action: diaryAction): DiaryListType[] => {
+const diary = (state: DiaryDataType[] = initState, action: diaryAction): any => {
   switch (action.type) {
     case INIT_DIARYLIST:
       return state = action.diaryItem;
@@ -80,10 +96,10 @@ const diary = (state: DiaryListType[] = initState, action: diaryAction): DiaryLi
         action.diaryItem
       ];
     case REMOVE_DIARYLIST:
-      return state.filter((data: any) => (data.date !== action.diaryItem.date && data.sort !== action.diaryItem.sort));
+      return state.filter((data) => data !== action.diaryItem);
     case EDIT_DIARYLIST:
       return state.map((el: any) =>
-        (el.date === action.diaryItem.date && el.sort === action.diaryItem.sort) ?
+        (el.sort === action.diaryItem.sort) ?
           { ...action.diaryItem }
           : el
       );

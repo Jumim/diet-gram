@@ -11,7 +11,10 @@ interface CalorieInfoType {
   totalInfo: any
 }
 
-export const CalorieInfo = ({ userData, totalInfo }: CalorieInfoType) => {
+export const CalorieInfo = ({
+  userData,
+  totalInfo = []
+}: CalorieInfoType) => {
   return (
     <div className='CalorieInfo leftContents'>
       <div className='CalorieInfoTextArea'>
@@ -20,13 +23,17 @@ export const CalorieInfo = ({ userData, totalInfo }: CalorieInfoType) => {
       </div>
       <div className='CalorieInfoTextArea'>
         <Text size='regular'>오늘의 총 섭취 칼로리</Text>
-        <Text size='regular'>{`${Math.floor(totalInfo[0]).toLocaleString()} kcal`}</Text>
+        <Text size='regular'>{`${Math.floor(totalInfo.totalCal).toLocaleString()} kcal`}</Text>
       </div>
       {
-        totalInfo[1][0].value <= 0 && totalInfo[1][1].value <= 0 && totalInfo[1][2].value <= 0 ?
+        totalInfo.totalCarbs <= 0 && totalInfo.totalProtain <= 0 && totalInfo.totalFat <= 0 ?
           <></>
           :
-          <MyResponsivePie data={totalInfo[1]} />
+          <MyResponsivePie data={[
+            {id: '탄수화물(g)', label: '탄수화물(g)', value: totalInfo.totalCarbs},
+            {id: '단백질(g)', label: '단백질(g)', value: totalInfo.totalProtain},
+            {id: '지방(g)', label: '지방(g)', value: totalInfo.totalFat}
+          ]} />
       }
     </div>
   )

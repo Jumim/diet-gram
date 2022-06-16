@@ -16,7 +16,6 @@ interface UserFormType {
 
 export const UserModalContainer = () => {
   const dispatch = useDispatch();
-
   const authData = useSelector((state: RootState) => state.auth);
   const userModal = useSelector((state: RootState) => state.userModal);
 

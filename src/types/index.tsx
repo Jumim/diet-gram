@@ -2,15 +2,14 @@ export interface DiaryItemProps {
   uid: string
   date: string
   sort: string
-  data?: {
-    date?: string
-    sort?: string
-    food: any
-    totalCal: number
-    totalFat: number
-    totalCarbs: number
-    totalProtain: number
-  }
+  data?: DiaryListType
+}
+
+export interface DiaryDataType {
+  breakfast: DiaryListType,
+  lunch: DiaryListType,
+  dinner: DiaryListType,
+  snack: DiaryListType
 }
 
 export interface DiaryListType {

@@ -5,7 +5,15 @@ import { DiaryItemProps } from 'types';
 export const getDiaryList = async (item: DiaryItemProps) => {
   const diary = await getDocs(collection(db, 'DIARY', item.uid));
 
-  console.log(diary.empty);
+  const newData = diary.docs.map((doc) => ({
+    ...doc.data()
+  }));
+
+  if(!diary.empty) {
+    return {state: true, data: newData}
+  } else {
+    return {state: false, data: newData}
+  }
 }
 
 export const getDiaryData = async (item: DiaryItemProps) => {

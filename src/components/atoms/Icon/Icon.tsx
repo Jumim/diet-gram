@@ -10,7 +10,7 @@ export const Icon = ({
   text
 }: IconType) => {
   return (
-    <div className={`Icon Icon_${type}`}>
+    <div className={`Icon Icon${type}`}>
       {text}
     </div>
   );
