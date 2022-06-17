@@ -1,13 +1,14 @@
 import React from 'react';
 import { RiUserSmileFill } from 'react-icons/ri';
-import { Link } from 'components';
+import { Link, Button } from 'components';
 import './Header.scss';
 
 interface HeaderType {
   children: React.ReactNode | React.ReactNode[]
+  handleLogout: () => void
 }
 
-export const Header = ({ children }: HeaderType) => {
+export const Header = ({ children, handleLogout }: HeaderType) => {
   return (
     <header>
       <div className='HeaderLeft'>
@@ -19,7 +20,7 @@ export const Header = ({ children }: HeaderType) => {
         {children}
       </div>
       <div className='HeaderRight'>
-        <RiUserSmileFill />
+        <Button btnType='default' type='button' text={<RiUserSmileFill />} onClick={handleLogout} />
       </div>
     </header>
   );

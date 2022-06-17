@@ -1,7 +1,7 @@
 @import '_variable.scss';
 
 span {
-  letter-spacing: -1.2px;
+  letter-spacing: 0.2px;
   transform: skew(-0.03deg);
   flex: none;
 
@@ -24,6 +24,18 @@ span {
 
 @media (pointer: coarse) {
   span {
-    font-size: 1.0em;
+    letter-spacing: 0.2px;
+
+    &.small {
+      font-size: 0.9em;
+    }
+
+    &.regular {
+      font-size: 1.0em;
+    }
+
+    &.large {
+      font-size: 1.1em;
+    }
   }
 }

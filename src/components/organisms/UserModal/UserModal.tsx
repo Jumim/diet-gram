@@ -22,7 +22,7 @@ export const UserModal = ({
       <div className='UserModalBottom'>
         <div className='UserContent'>
           <Text>마이페이지에서 정보를 수정할 수 있습니다.</Text>
-          <Text>(나이, 키, 활동지수는 권장 칼로리 계산에 사용되며 따로 저장되지 않습니다.)</Text>
+          <Text>(나이, 키, 활동 레벨은 권장 칼로리 계산에 사용되며 따로 저장되지 않습니다.)</Text>
         </div>
         <Form onSubmit={onSubmit}>
           <InputArea

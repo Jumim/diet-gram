@@ -34,8 +34,12 @@ export const MainHeaderContainer = () => {
     });
   }
 
+  const handleLogout = () => {
+
+  }
+
   return (
-    <Header>
+    <Header handleLogout={handleLogout}>
       <Button text={<AiOutlineDoubleLeft />} type='button' btnType='default' onClick={() => prevDay()} />
       <Text size='regular'>{date}</Text>
       <Button text={<AiOutlineDoubleRight />} type='button' btnType='default' onClick={() => nextDay()} />

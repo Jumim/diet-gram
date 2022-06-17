@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
-import { setUserThunk } from 'store/modules/user';
-import { setUserModal } from 'store/modules/userModal';
+import { setUserThunk, setUserModal } from 'store/modules';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -32,20 +31,26 @@ export const UserModalContainer = () => {
       calorie: daykcal
     };
 
-    dispatch(setUserThunk(userInfo));
-    setUserModal(false);
+    dispatch(setUserThunk(userInfo))
+      .then(() => {
+        dispatch(setUserModal(false));
+      })
+      .catch((err: string) => {
+        alert(err);
+      });
+
   }
 
   return (
     <>
       {
         userModal &&
-          <UserModal
-            onSubmit={handleSubmit(onSubmit)}
-            register={register}
-            errors={errors}
-            activityLevelList={activityLevelList}
-          />
+        <UserModal
+          onSubmit={handleSubmit(onSubmit)}
+          register={register}
+          errors={errors}
+          activityLevelList={activityLevelList}
+        />
       }
     </>
   )

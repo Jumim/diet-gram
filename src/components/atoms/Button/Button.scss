@@ -26,8 +26,10 @@
 
   /* default */
   &.Button_default {
+    width: fit-content;
     background-color: transparent;
     color: $darkgray;
+    padding: 0px;
   }
 
   &:focus {
