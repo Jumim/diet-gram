@@ -15,6 +15,7 @@ header {
   border-bottom: 1px solid $gray;
   padding: 0 10%;
   box-sizing: border-box;
+  z-index: 99;
 
   > div {
     display: flex;
@@ -40,5 +41,34 @@ header {
   .HeaderRight {
     justify-content: flex-end;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 1200px) and (pointer: fine) {
+  header {
+    padding: 0 5%;
+
+    .HeaderLeft {
+      img {
+        width: 80px;
+      }
+    }
+  }
+}
+
+@media (pointer: coarse) {
+  header {
+    padding: 0 20px;
+
+    .HeaderLeft {
+      img {
+        width: 80px;
+      }
+    }
+
+    .HeaderCenter {
+      justify-content: center;
+      gap: 15px;
+    }
   }
 }

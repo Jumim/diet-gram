@@ -1,14 +1,15 @@
 import { Feed, Icon, IconList, Text, Button } from 'components';
 import './DiaryList.scss';
+import { DiaryDataType } from 'types';
 
 interface DiaryListType {
-  diary: any
+  diary: DiaryDataType
   navi: any
   deleteDiaryItem: (sort: string) => void
 }
 
 export const DiaryList = ({
-  diary = {},
+  diary,
   navi,
   deleteDiaryItem
 }: DiaryListType) => {

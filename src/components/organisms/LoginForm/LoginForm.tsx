@@ -27,7 +27,9 @@ export const LoginForm = ({ onSubmit, register, errors }: LoginFormProps) => {
         error={errors.password && errors.password.message}
       />
       <Button btnType='positive' type='submit' text='로그인' />
-      <Link to='/join'>회원가입</Link>
+      <div className='JoinLink'>
+        <Link to='/join'>회원가입</Link>
+      </div>
     </Form>
   )
 }

@@ -10,6 +10,7 @@ export interface DiaryDataType {
   lunch: DiaryListType,
   dinner: DiaryListType,
   snack: DiaryListType,
+  isLoading?: boolean
 }
 
 export interface DiaryListType {
