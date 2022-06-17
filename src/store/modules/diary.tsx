@@ -43,7 +43,8 @@ export const getDiaryDataThunk = (diaryItem: any): any => {
           breakfast: breakfastData === undefined ? {sort: 'breakfast', sortText: '아침'} : breakfastData,
           lunch: lunchData === undefined ? {sort: 'lunch', sortText: '점심'} : lunchData,
           dinner: dinnerData === undefined ? {sort: 'dinner', sortText: '저녁'} : dinnerData,
-          snack: snackData === undefined ? {sort: 'snack', sortText: '간식'} : snackData
+          snack: snackData === undefined ? {sort: 'snack', sortText: '간식'} : snackData,
+          isLoading: true
         }
 
         dispatch(initDiaryList(newData));
@@ -52,7 +53,8 @@ export const getDiaryDataThunk = (diaryItem: any): any => {
           breakfast: {sort: 'breakfast', sortText: '아침'},
           lunch: {sort: 'lunch', sortText: '점심'},
           dinner: {sort: 'dinner', sortText: '저녁'},
-          snack: {sort: 'snack', sortText: '간식'}
+          snack: {sort: 'snack', sortText: '간식'},
+          isLoading: true
         }
 
         dispatch(initDiaryList(newData));
@@ -112,6 +114,7 @@ const initState: DiaryDataType = {
     sort: 'snack',
     sortText: '간식'
   },
+  isLoading: false
 };
 
 // 리듀서

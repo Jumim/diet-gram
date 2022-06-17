@@ -24,9 +24,9 @@ export const MainContainer = () => {
         }
 
         batch(() => {
-          dispatch(setAuth(authData));
-          dispatch(getUserThunk(user.uid));
-          dispatch(getDiaryDataThunk({ uid: user.uid, date: date }));
+          dispatch(setAuth(authData))
+          dispatch(getUserThunk(user.uid))
+          dispatch(getDiaryDataThunk({ uid: user.uid, date: date }))
         });
       } else {
         // 메인페이지 접근 시, 로그아웃 상태면 로그인 페이지로 이동
@@ -41,6 +41,7 @@ export const MainContainer = () => {
     });
     // eslint-disable-next-line
   }, []);
+
 
   const deleteDiaryItem = (sort: string) => {
     const diaryItem: DiaryItemProps = {
@@ -57,8 +58,6 @@ export const MainContainer = () => {
     var totalCarbs = 0;
     var totalProtain = 0;
     var totalFat = 0;
-
-    console.log('칼로리 정보');  // 3번씩 렌더링 되는거 수정
 
     Object.values(diary).forEach((data: any) => {
       totalCalorie += (data.totalCal === undefined ? 0 : data.totalCal)
@@ -89,10 +88,11 @@ export const MainContainer = () => {
     <>
       <CalorieInfo
         userData={userData}
-        totalInfo={totalInfo()}
+        totalInfo={diary.isLoading && totalInfo()}
+        isLoading={diary.isLoading}
       />
       <DiaryList
-        diary={diary}
+        diary={diary.isLoading && [diary.breakfast, diary.lunch, diary.dinner, diary.snack]}
         navi={navi}
         deleteDiaryItem={deleteDiaryItem}
       />
