@@ -4,19 +4,19 @@ import './Button.scss';
 interface ButtonProps {
   btnType: 'positive' | 'negative' | 'default'
   type: 'button' | 'submit' | 'reset'
-  text: string | React.ReactNode
+  children: string | React.ReactNode | React.ReactNode[]
   onClick?: () => void
 }
 
 export const Button= ({
   btnType = 'default',
   type = 'button',
-  text,
+  children,
   onClick
 }: ButtonProps) => {
   return (
     <button className={['Button', `Button_${btnType}`].join(' ')} type={type} onClick={onClick}>
-      {text}
+      {children}
     </button>
   );
 }

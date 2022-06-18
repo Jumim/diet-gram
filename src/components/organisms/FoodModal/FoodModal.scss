@@ -1,14 +1,30 @@
+@import '_variable.scss';
+
 .FoodModalTop {
   display: flex;
-  flex-flow: row;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
 }
 
 .FoodModalBottom {
-  height: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  height: 68vh;
 
   form {
     display: flex;
     flex-flow: row;
     align-items: center;
+
+    :nth-child(1) {
+      flex-basis: 78%;
+    }
+
+    :nth-child(2) {
+      flex-basis: 22%;
+    }
   }
 }

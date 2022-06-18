@@ -55,7 +55,7 @@ export const UserModal = ({
             register={register}
             item={activityLevelList}
           />
-          <Button btnType='positive' type='submit' text='정보 등록하기' />
+          <Button btnType='positive' type='submit'>정보 등록하기</Button>
         </Form>
       </div>
     </Modal>

@@ -39,8 +39,8 @@ export const WriteForm = ({
         readOnly={true}
       />
       { foodList.length > 0 && <FoodList data={foodList} btnText='삭제' onClick={handleRemoveFoodList} /> }
-      <Button btnType='positive' type='button' text='음식 추가하기' onClick={handleFoodModal} />
-      <Button btnType='positive' type='submit' text='작성' />
+      <Button btnType='positive' type='button' onClick={handleFoodModal}>음식 추가하기</Button>
+      <Button btnType='positive' type='submit'>작성</Button>
     </Form>
   )
 }

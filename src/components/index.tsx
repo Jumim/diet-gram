@@ -11,7 +11,8 @@ export { Title } from './atoms/Title/Title';
 export { Wrapper } from './atoms/Wrapper/Wrapper';
 
 /* molecules */
-export {FoodList} from './molecules/FoodList/FoodList';
+export { CloseButton } from './molecules/CloseButton/CloseButton';
+export { FoodList } from './molecules/FoodList/FoodList';
 export { Form } from './molecules/Form/Form';
 export { IconList } from './molecules/IconList/IconList';
 export { InputArea } from './molecules/InputArea/InputArea';
@@ -19,7 +20,7 @@ export { SelectArea } from './molecules/SelectArea/SelectArea';
 export { MyResponsivePie } from './molecules/MyResponsivePie/MyResponsivePie';
 
 /* organisms */
-export {FoodModal} from './organisms/FoodModal/FoodModal';
+export { FoodModal } from './organisms/FoodModal/FoodModal';
 export { CalorieInfo } from './organisms/CalorieInfo/CalorieInfo';
 export { DiaryList } from './organisms/DiaryList/DiaryList';
 export { Header } from './organisms/Header/Header';

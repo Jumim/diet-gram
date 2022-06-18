@@ -12,19 +12,19 @@ export const Positive = Template.bind({});
 Positive.args = {
   btnType: 'positive',
   type: 'button',
-  text: 'Button'
+  children: 'Button'
 };
 
 export const Negative = Template.bind({});
 Negative.args = {
   btnType: 'negative',
   type: 'button',
-  text: 'Button',
+  children: 'Button',
 };
 
 export const Default = Template.bind({});
 Default.args = {
   btnType: 'default',
   type: 'button',
-  text: 'Button',
+  children: 'Button',
 };

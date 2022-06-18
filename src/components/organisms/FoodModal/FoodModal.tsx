@@ -1,6 +1,5 @@
 import { FoodListType } from 'types';
-import { TiDelete } from 'react-icons/ti';
-import { Modal, Input, Button, FoodList, Text, Form, Title } from 'components';
+import { Modal, Input, Button, FoodList, Text, Form, Title, CloseButton } from 'components';
 import './FoodModal.scss';
 
 interface FoodModalType {
@@ -26,12 +25,7 @@ export const FoodModal = ({
     <Modal>
       <div className='FoodModalTop'>
         <Title>음식 추가하기</Title>
-        <Button
-          btnType='default'
-          type='button'
-          text={<TiDelete />}
-          onClick={handleModal}
-        />
+        <CloseButton onClick={handleModal} />
       </div>
       <div className='FoodModalBottom'>
         <Form onSubmit={onSubmit}>
@@ -40,11 +34,9 @@ export const FoodModal = ({
             type='text'
             register={register}
           />
-          <Button
-            btnType='positive'
-            type='submit'
-            text='검색'
-          />
+          <Button btnType='positive' type='submit' >
+            검색
+          </Button>
         </Form>
         {
           code === 'INFO-200' ?

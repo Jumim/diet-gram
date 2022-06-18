@@ -1,0 +1,35 @@
+@import '_variable.scss';
+
+.CloseButton {
+  position: relative;
+  width: 3em;
+  height: 3em;
+
+  .CloseBar {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 3em;
+    height: 2px;
+    background-color: $darkgray;
+
+    &:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+@media (pointer: coarse) {
+  .CloseButton {
+    width: 2em;
+    height: 2em;
+
+    .CloseBar {
+      width: 2em;
+    }
+  }
+}

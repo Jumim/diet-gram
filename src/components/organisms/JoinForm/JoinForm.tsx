@@ -34,7 +34,7 @@ export const JoinForm = ({ onSubmit, register, errors }: JoinFormProps) => {
         placeholder='비밀번호 확인을 입력해주세요.'
         error={errors.passwordCheck && errors.passwordCheck.message}
       />
-      <Button btnType='positive' type='submit' text='회원가입' />
+      <Button btnType='positive' type='submit'>회원가입</Button>
       <div className='LoginLink'>
         <Link to='/login'>로그인</Link>
       </div>

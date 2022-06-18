@@ -1,10 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector, batch } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
 import { setDate, getDiaryDataThunk } from 'store/modules';
+import { logout } from 'config/auth';
 import { Button, Header, Text } from 'components';
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 
 export const MainHeaderContainer = () => {
+  const navi = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user);
   const date = useSelector((state: RootState) => state.date);
@@ -35,14 +38,23 @@ export const MainHeaderContainer = () => {
   }
 
   const handleLogout = () => {
-
+    if(window.confirm('로그아웃 하시겠습니까?')) {
+      logout()
+        .then(() => {
+          alert('로그아웃에 성공하셨습니다.');
+          navi('/login');
+        })
+        .catch((err: string) => {
+          console.log(err);
+        })
+    }
   }
 
   return (
     <Header handleLogout={handleLogout}>
-      <Button text={<AiOutlineDoubleLeft />} type='button' btnType='default' onClick={() => prevDay()} />
+      <Button type='button' btnType='default' onClick={() => prevDay()}><AiOutlineDoubleLeft /></Button>
       <Text size='regular'>{date}</Text>
-      <Button text={<AiOutlineDoubleRight />} type='button' btnType='default' onClick={() => nextDay()} />
+      <Button type='button' btnType='default' onClick={() => nextDay()}><AiOutlineDoubleRight /></Button>
     </Header>
   )
 }

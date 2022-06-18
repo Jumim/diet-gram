@@ -26,7 +26,7 @@ export const LoginForm = ({ onSubmit, register, errors }: LoginFormProps) => {
         placeholder='비밀번호를 입력해주세요.'
         error={errors.password && errors.password.message}
       />
-      <Button btnType='positive' type='submit' text='로그인' />
+      <Button btnType='positive' type='submit'>로그인</Button>
       <div className='JoinLink'>
         <Link to='/join'>회원가입</Link>
       </div>
