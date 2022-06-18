@@ -17,12 +17,14 @@ export const FoodList = ({ data, btnText, onClick, setInView }: FoodListType) =>
       {
         data.map((data, i) =>
           <Feed key={'FoodFeed_' + i} className='FoodFeed'>
-            <Text>{data.DESC_KOR}</Text>
-            <Text>{Math.floor(Number(data.NUTR_CONT1)) + ' kcal'}</Text>
-            <div className='nutrientsIconList'>
-              <Icon type='default' text={`탄수화물 ${Math.floor(Number(data.NUTR_CONT2))} g`} />
-              <Icon type='default' text={`단백질 ${Math.floor(Number(data.NUTR_CONT3))} g`} />
-              <Icon type='default' text={`지방 ${Math.floor(Number(data.NUTR_CONT4))} g`} />
+            <div className='NutrientsText'>
+              <Text>{data.DESC_KOR}</Text>
+              <Text>{Math.floor(Number(data.NUTR_CONT1)) + ' kcal'}</Text>
+            </div>
+            <div className='NutrientsIconList'>
+              <Icon type='Default' text={`탄수화물 ${Math.floor(Number(data.NUTR_CONT2))} g`} />
+              <Icon type='Default' text={`단백질 ${Math.floor(Number(data.NUTR_CONT3))} g`} />
+              <Icon type='Default' text={`지방 ${Math.floor(Number(data.NUTR_CONT4))} g`} />
             </div>
             <Button btnType='positive' type='button' text={btnText} onClick={() => onClick(data)} />
           </Feed>

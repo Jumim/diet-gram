@@ -1,7 +1,7 @@
 import './Icon.scss';
 
 interface IconType {
-  type: 'default' | 'breakfast' | 'lunch' | 'dinner' | 'snack' | string
+  type: 'Default' | 'Breakfast' | 'Lunch' | 'Dinner' | 'Snack' | string
   text: string
 }
 
