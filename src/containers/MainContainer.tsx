@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "config/firebase";
 import { useDispatch, useSelector, batch } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
-import { setAuth, getUserThunk, getDiaryDataThunk, deleteDiaryDataThunk } from 'store/modules';
+import { setAuth, getUserThunk, getDiaryDataThunk, deleteDiaryDataThunk, initDiaryList } from 'store/modules';
 import { DiaryList, CalorieInfo } from 'components';
 import { DiaryItemProps } from 'types';
 
@@ -34,13 +34,13 @@ export const MainContainer = () => {
           authenticated: false,
           uid: ''
         }
-
+        
         dispatch(setAuth(authData));
         navi('/login');
       }
     });
     // eslint-disable-next-line
-  }, []);
+  }, [auth]);
 
 
   const deleteDiaryItem = (sort: string) => {
