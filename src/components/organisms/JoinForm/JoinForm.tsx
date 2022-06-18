@@ -1,4 +1,4 @@
-import { Form, InputArea, Button, SelectArea } from 'components';
+import { Form, InputArea, Button, Link } from 'components';
 import './JoinForm.scss';
 
 interface JoinFormProps {
@@ -35,6 +35,9 @@ export const JoinForm = ({ onSubmit, register, errors }: JoinFormProps) => {
         error={errors.passwordCheck && errors.passwordCheck.message}
       />
       <Button btnType='positive' type='submit' text='회원가입' />
+      <div className='LoginLink'>
+        <Link to='/login'>로그인</Link>
+      </div>
     </Form>
   )
 }

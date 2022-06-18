@@ -4,25 +4,72 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 25px;
   width: 100%;
   box-sizing: border-box;
   border-right: 2px solid $gray;
 
   .CalorieInfoTextArea {
+    position: relative;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     width: 100%;
-    margin-bottom: 40px;
+    padding: 32px 80px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: $blue;
+    color: $white;
+
+    &.left {
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 82%;
+        width: 0;
+        height: 0;
+        border: 19px solid transparent;
+        border-right-color: $blue;
+        border-left: 0;
+        border-bottom: 0;
+        margin-top: -9.5px;
+        margin-left: -19px;
+      }
+    }
+
+    &.right {
+      &:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 82%;
+        width: 0;
+        height: 0;
+        border: 19px solid transparent;
+        border-left-color: $blue;
+        border-right: 0;
+        border-bottom: 0;
+        margin-top: -9.5px;
+        margin-right: -19px;
+      }
+    }
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      gap: 12px;
+    }
   }
 }
-
 @media (max-width: 1200px) and (pointer: fine) {
   .CalorieInfo {
     border-right: none;
     border-bottom: 2px solid $gray;
   }
 }
-
 @media (pointer: coarse) {
   .CalorieInfo {
     border-right: none;

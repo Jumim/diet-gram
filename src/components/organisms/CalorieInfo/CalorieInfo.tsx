@@ -19,16 +19,22 @@ export const CalorieInfo = ({
 }: CalorieInfoType) => {
   return (
     <div className='CalorieInfo leftContents'>
-      <div className='CalorieInfoTextArea'>
-        <Text size='regular'>{`${userData.name}님의 하루 권장 칼로리`}</Text>
-        <Text size='regular'>{`${Math.floor(userData.calorie).toLocaleString()} kcal`}</Text>
+      <div className='CalorieInfoTextArea left'>
+        <Text size='regular'>{`${userData.name}님의 하루 권장 칼로리는`}</Text>
+        <div>
+          <Text size='large'>{`${Math.floor(userData.calorie).toLocaleString()}`}</Text>
+          <Text size='regular'>kcal</Text>
+        </div>
       </div>
       {
         isLoading &&
         <>
-          <div className='CalorieInfoTextArea'>
-            <Text size='regular'>오늘의 총 섭취 칼로리</Text>
-            <Text size='regular'>{`${Math.floor(totalInfo[0]).toLocaleString()} kcal`}</Text>
+          <div className='CalorieInfoTextArea right'>
+            <Text size='regular'>오늘의 총 섭취 칼로리는</Text>
+            <div>
+              <Text size='large'>{`${Math.floor(totalInfo[0]).toLocaleString()}`}</Text>
+              <Text size='regular'>kcal</Text>
+            </div>
           </div>
           {
             totalInfo[1][0].value <= 0 && totalInfo[1][1].value <= 0 && totalInfo[1][2].value <= 0 ?

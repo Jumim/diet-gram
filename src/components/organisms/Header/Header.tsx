@@ -20,7 +20,9 @@ export const Header = ({ children, handleLogout }: HeaderType) => {
         {children}
       </div>
       <div className='HeaderRight'>
-        <Button btnType='default' type='button' text={<RiUserSmileFill />} onClick={handleLogout} />
+        <div onClick={handleLogout}>
+          <RiUserSmileFill />
+        </div>
       </div>
     </header>
   );

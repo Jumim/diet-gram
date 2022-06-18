@@ -21,24 +21,26 @@ header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 33.3%;
   }
 
   .HeaderLeft {
+    width: 25%;
     justify-content: flex-start;
     padding-top: 5px;
 
     img {
-      width: 120px;
+      width: 100px;
     }
   }
 
   .HeaderCenter {
+    width: 50%;
     justify-content: center;
-    gap: 30px;
+    gap: 25px;
   }
 
   .HeaderRight {
+    width: 25%;
     justify-content: flex-end;
     cursor: pointer;
   }
@@ -68,7 +70,6 @@ header {
 
     .HeaderCenter {
       justify-content: center;
-      gap: 20px;
     }
   }
 }

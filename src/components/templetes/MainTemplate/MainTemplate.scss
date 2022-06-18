@@ -2,21 +2,20 @@
 
 .MainTemplate {
   width: 100%;
-  box-sizing: border-box;
 
   .MainContents {
     display: flex;
     flex-flow: row;
     width: 100%;
     height: 100vh;
-    margin-top: 50px;
+    padding-top: 50px;
     box-sizing: border-box;
     background-color: $white;
 
     > div.leftContents, div.rightContents {
       width: 50%;
       height: 100%;
-      padding: 60px 120px;
+      padding: 60px 6.8%;
     }
   }
 }
@@ -31,7 +30,7 @@
 
       > div.leftContents, div.rightContents {
         width: 100%;
-        padding: 60px 10vw;
+        padding: 60px 12%;
       }
     }
   }
@@ -47,7 +46,7 @@
 
       > div.leftContents, div.rightContents {
         width: 100%;
-        padding: 60px 8vw;
+        padding: 60px 10%;
       }
     }
   }
