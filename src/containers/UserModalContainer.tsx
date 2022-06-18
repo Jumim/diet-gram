@@ -5,13 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { UserModal } from 'components';
-
-interface UserFormType {
-  name: string
-  age: number
-  height: number
-  activityLevelList: string
-}
+import { UserFormType } from 'types';
 
 export const UserModalContainer = () => {
   const dispatch = useDispatch();
@@ -22,7 +16,7 @@ export const UserModalContainer = () => {
     resolver: yupResolver(userFormSchema)
   });
 
-  const onSubmit: SubmitHandler<UserFormType> = (data: any) => {
+  const onSubmit: SubmitHandler<UserFormType> = (data: UserFormType) => {
     const daykcal = recommendedCalorie(data.height, data.activityLevel);
 
     const userInfo = {

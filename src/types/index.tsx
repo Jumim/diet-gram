@@ -1,3 +1,6 @@
+/* Diary */
+export type SortType = 'breakfast' | 'lunch' | 'dinner' | 'snack';
+
 export interface DiaryItemProps {
   uid: string
   date: string
@@ -24,6 +27,7 @@ export interface DiaryListType {
   totalFat?: number
 }
 
+/* Food */
 export interface FoodListType {
   NUTR_CONT8: string
   NUTR_CONT9: string
@@ -48,6 +52,7 @@ export interface FoodListType {
   FOOD_CD: string
 }
 
+/* User */
 export interface UserFormType {
   name: string
   age: number
@@ -60,9 +65,8 @@ export interface UserInfoType {
   calorie: number
 }
 
+/* Write */
 export interface WriteFormType {
   date: string
   sort: string
 }
-
-export type SortType = 'breakfast' | 'lunch' | 'dinner' | 'snack';

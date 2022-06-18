@@ -4,18 +4,14 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
 import { setFoodModal, removeFoodList, setDiaryDataThunk, resetFoodList, initFoodList } from 'store/modules';
-import { WriteFormType, FoodListType, DiaryItemProps } from 'types';
 import { WriteForm } from 'components';
-
-interface WriteFormContainerType {
-  isEdit?: boolean
-}
+import { WriteFormType, FoodListType, DiaryItemProps, SortType } from 'types';
 
 interface ParamsProps {
-  sort?: 'breakfast' | 'lunch' | 'dinner' | 'snack'
+  sort?: SortType
 }
 
-export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
+export const WriteFormContainer = ({ isEdit }: { isEdit?: boolean }) => {
   const { register, handleSubmit } = useForm<WriteFormType>();
 
   const navi = useNavigate();
@@ -28,12 +24,12 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
   const foodList = useSelector((state: RootState) => state.foodList);
 
   useEffect(() => {
-    if(isEdit) {
+    if (isEdit) {
       dispatch(initFoodList(diary[sort ? sort : '']['food']));
     } else {
       dispatch(resetFoodList());
     }
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [isEdit]);
 
   const onSubmit: SubmitHandler<WriteFormType> = (data) => {
