@@ -1,11 +1,9 @@
-import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { auth } from "config/firebase";
-import { useDispatch, useSelector, batch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
-import { setAuth, getUserThunk, getDiaryDataThunk, deleteDiaryDataThunk, initDiaryList } from 'store/modules';
+import { deleteDiaryDataThunk } from 'store/modules';
 import { DiaryList, CalorieInfo } from 'components';
-import { DiaryItemProps } from 'types';
+import { DiaryItemProps, SortType } from 'types';
 
 export const MainContainer = () => {
   const navi = useNavigate();
@@ -14,36 +12,7 @@ export const MainContainer = () => {
   const date = useSelector((state: RootState) => state.date);
   const diary = useSelector((state: RootState) => state.diary);
 
-  useEffect(() => {
-    // 로그인 여부 확인
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        const authData = {
-          authenticated: true,
-          uid: user.uid
-        }
-
-        batch(() => {
-          dispatch(setAuth(authData))
-          dispatch(getUserThunk(user.uid))
-          dispatch(getDiaryDataThunk({ uid: user.uid, date: date }))
-        });
-      } else {
-        // 메인페이지 접근 시, 로그아웃 상태면 로그인 페이지로 이동
-        const authData = {
-          authenticated: false,
-          uid: ''
-        }
-        
-        dispatch(setAuth(authData));
-        navi('/login');
-      }
-    });
-    // eslint-disable-next-line
-  }, [auth]);
-
-
-  const deleteDiaryItem = (sort: string) => {
+  const deleteDiaryItem = (sort: SortType) => {
     const diaryItem: DiaryItemProps = {
       uid: userData.uid,
       date: date,
@@ -54,16 +23,19 @@ export const MainContainer = () => {
   }
 
   const totalInfo = () => {
+    console.log('ddd');
     var totalCalorie = 0;
     var totalCarbs = 0;
     var totalProtain = 0;
     var totalFat = 0;
 
-    Object.values(diary).forEach((data: any) => {
-      totalCalorie += (data.totalCal === undefined ? 0 : data.totalCal)
-      totalCarbs += (data.totalCarbs === undefined ? 0 : data.totalCarbs)
-      totalProtain += (data.totalProtain === undefined ? 0 : data.totalProtain)
-      totalFat += (data.totalFat === undefined ? 0 : data.totalFat)
+    const newData = [diary.breakfast, diary.lunch, diary.dinner, diary.snack];
+
+    newData.forEach((data: any) => {
+      totalCalorie += Number((data.totalCal === undefined ? 0 : data.totalCal))
+      totalCarbs += Number((data.totalCarbs === undefined ? 0 : data.totalCarbs))
+      totalProtain += Number((data.totalProtain === undefined ? 0 : data.totalProtain))
+      totalFat += Number((data.totalFat === undefined ? 0 : data.totalFat))
     });
 
     const totalData = [

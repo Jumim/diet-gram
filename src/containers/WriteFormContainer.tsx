@@ -11,11 +11,15 @@ interface WriteFormContainerType {
   isEdit?: boolean
 }
 
+interface ParamsProps {
+  sort?: 'breakfast' | 'lunch' | 'dinner' | 'snack'
+}
+
 export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
   const { register, handleSubmit } = useForm<WriteFormType>();
 
   const navi = useNavigate();
-  const params = useParams();
+  const { sort }: ParamsProps = useParams();
 
   const dispatch = useDispatch();
   const auth = useSelector((state: RootState) => state.auth);
@@ -25,7 +29,7 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
 
   useEffect(() => {
     if(isEdit) {
-      dispatch(initFoodList(diary[params.sort ? params.sort : '']['food']));
+      dispatch(initFoodList(diary[sort ? sort : '']['food']));
     } else {
       dispatch(resetFoodList());
     }
@@ -41,10 +45,10 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
       const diaryItem: DiaryItemProps = {
         uid: auth.uid,
         date: data.date,
-        sort: params.sort ? params.sort : '',
+        sort: sort ? sort : 'breakfast',
         data: {
           date: data.date,
-          sort: params.sort ? params.sort : '',
+          sort: sort ? sort : 'breakfast',
           sortText: data.sort,
           food: foodList,
           totalCal: totalInfo[0],
@@ -65,9 +69,9 @@ export const WriteFormContainer = ({ isEdit }: WriteFormContainerType) => {
       register={register}
       date={date}
       foodList={foodList}
-      handleRemoveFoodList={(foodData: FoodListType) => dispatch(removeFoodList(foodData.NUM))}
+      handleRemoveFoodList={(foodData: FoodListType) => dispatch(removeFoodList(foodData.FOOD_CD))}
       handleFoodModal={() => dispatch(setFoodModal(true))}
-      sortValue={getSortText(params.sort)}
+      sortValue={getSortText(sort)}
     />
   );
 }

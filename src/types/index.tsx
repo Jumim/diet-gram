@@ -1,7 +1,7 @@
 export interface DiaryItemProps {
   uid: string
   date: string
-  sort: string
+  sort: SortType
   data?: DiaryListType
 }
 
@@ -64,3 +64,5 @@ export interface WriteFormType {
   date: string
   sort: string
 }
+
+export type SortType = 'breakfast' | 'lunch' | 'dinner' | 'snack';

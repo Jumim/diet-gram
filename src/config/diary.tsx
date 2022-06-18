@@ -1,5 +1,5 @@
 import { db } from './firebase';
-import { doc, getDoc, setDoc, getDocs, collection, deleteDoc } from "firebase/firestore";
+import { doc, setDoc, getDocs, collection, deleteDoc } from "firebase/firestore";
 import { DiaryItemProps } from 'types';
 
 export const getDiaryList = async (item: DiaryItemProps) => {

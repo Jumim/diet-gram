@@ -45,7 +45,7 @@ const foodList = (state: FoodListType[] = initState, action: foodListAction): Fo
         action.foodItem
       ];
     case REMOVE_FOODLIST:
-      return state.filter((data: any) => data.NUM !== action.foodItem);
+      return state.filter((data: any) => data.FOOD_CD !== action.foodItem);
     case RESET_FOODLIST:
       return state = initState;
     default:
