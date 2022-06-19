@@ -1,11 +1,11 @@
 import { getDiaryData, setDiaryData, deleteDiaryData } from 'config/diary';
-import { DiaryItemProps, DiaryDataType } from 'types';
+import { DiaryItemProps, DiaryDataType, DiaryListType, SortType } from 'types';
 
 // 타입 선언
 // ReturnType <typeof > 는 특정 함수의 타입을 추론함.
 type diaryAction = ReturnType<typeof setDiaryList>
-                  | ReturnType<typeof removeDiaryList>
-                  | ReturnType<typeof initDiaryList>;
+  | ReturnType<typeof removeDiaryList>
+  | ReturnType<typeof initDiaryList>;
 
 // 액션 타입 지정
 const SET_DIARYLIST = 'DIARY/SET_DIARY' as const;
@@ -13,22 +13,22 @@ const INIT_DIARYLIST = 'DIARY/INIT_DIARYLIST' as const;
 const REMOVE_DIARYLIST = 'DIARY/REMOVE_DIARYLIST' as const;
 
 // 액션 생성 함수 지정
-export const setDiaryList = (payload: any) => ({
+export const setDiaryList = (payload: { sort: string, data: DiaryListType }) => ({
   type: SET_DIARYLIST,
   payload: payload
 });
 
-export const initDiaryList = (payload: any) => ({
+export const initDiaryList = (payload: DiaryDataType) => ({
   type: INIT_DIARYLIST,
   payload: payload
 });
 
-export const removeDiaryList = (payload: 'breakfast' | 'lunch' | 'dinner' | 'snack') => ({
+export const removeDiaryList = (payload: SortType) => ({
   type: REMOVE_DIARYLIST,
   payload: payload
 });
 
-export const getDiaryDataThunk = (diaryItem: any): any => {
+export const getDiaryDataThunk = (diaryItem: { uid: string, date: string }): any => {
   return async (dispatch: any) => {
     try {
       const diary = await getDiaryData(diaryItem);
@@ -39,21 +39,21 @@ export const getDiaryDataThunk = (diaryItem: any): any => {
       const snackData = diary.data.find((data) => data.sort === 'snack');
 
       if (diary.state) {
-        const newData = {
-          breakfast: breakfastData === undefined ? {sort: 'breakfast', sortText: '아침'} : breakfastData,
-          lunch: lunchData === undefined ? {sort: 'lunch', sortText: '점심'} : lunchData,
-          dinner: dinnerData === undefined ? {sort: 'dinner', sortText: '저녁'} : dinnerData,
-          snack: snackData === undefined ? {sort: 'snack', sortText: '간식'} : snackData,
+        const newData: DiaryDataType = {
+          breakfast: breakfastData === undefined ? { sort: 'breakfast', sortText: '아침' } : breakfastData,
+          lunch: lunchData === undefined ? { sort: 'lunch', sortText: '점심' } : lunchData,
+          dinner: dinnerData === undefined ? { sort: 'dinner', sortText: '저녁' } : dinnerData,
+          snack: snackData === undefined ? { sort: 'snack', sortText: '간식' } : snackData,
           isLoading: true
         }
 
         dispatch(initDiaryList(newData));
       } else {
         const newData = {
-          breakfast: {sort: 'breakfast', sortText: '아침'},
-          lunch: {sort: 'lunch', sortText: '점심'},
-          dinner: {sort: 'dinner', sortText: '저녁'},
-          snack: {sort: 'snack', sortText: '간식'},
+          breakfast: { sort: 'breakfast', sortText: '아침' },
+          lunch: { sort: 'lunch', sortText: '점심' },
+          dinner: { sort: 'dinner', sortText: '저녁' },
+          snack: { sort: 'snack', sortText: '간식' },
           isLoading: true
         }
 
@@ -70,7 +70,7 @@ export const setDiaryDataThunk = (diaryItem: DiaryItemProps): any => {
     try {
       setDiaryData(diaryItem)
         .then(() => {
-          const newData = {
+          const newData: any = {
             sort: diaryItem.sort,
             data: diaryItem.data
           }

@@ -5,9 +5,9 @@ type dateAction = ReturnType<typeof setDate>;
 const SET_DATE = 'DATE/SET_DATE';
 
 // 액션 생성 함수 지정
-export const setDate = (date: string): {type: string; date: string} => ({
+export const setDate = (date: string): {type: string; payload: string} => ({
   type: SET_DATE,
-  date: date  // 선택한 날짜
+  payload: date  // 선택한 날짜
 });
 
 const initState = `${new Date().getFullYear()}-${('0'+(new Date().getMonth() + 1)).slice(-2)}-${('0'+new Date().getDate()).slice(-2)}`;
@@ -16,7 +16,7 @@ const initState = `${new Date().getFullYear()}-${('0'+(new Date().getMonth() + 1
 const date = (state: string = initState, action: dateAction): string => {
   switch (action.type) {
     case SET_DATE:
-      return action.date;
+      return action.payload;
     default:
       return state;
   }

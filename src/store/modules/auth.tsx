@@ -1,7 +1,4 @@
-interface authType {
-  authenticated: boolean
-  uid: string
-}
+import { AuthType } from 'types';
 
 // 타입 선언
 type authAction = ReturnType<typeof setAuth>;
@@ -10,24 +7,24 @@ type authAction = ReturnType<typeof setAuth>;
 const SET_AUTH = 'AUTH/SET_AUTH';
 
 // 액션 생성 함수 지정
-export const setAuth = (result: authType): {type: string; result: authType} => ({
+export const setAuth = (result: AuthType): {type: string; payload: AuthType} => ({
   type: SET_AUTH,
-  result: result
+  payload: result
 });
 
-const initState: authType = {
+const initState: AuthType = {
   authenticated: false,
   uid: ''
 };
 
 // 리듀서
-const auth = (state: authType = initState, action: authAction): authType => {
+const auth = (state: AuthType = initState, action: authAction): AuthType => {
   switch (action.type) {
     case SET_AUTH:
       return {
         ...state,
-        authenticated: action.result.authenticated,
-        uid: action.result.uid
+        authenticated: action.payload.authenticated,
+        uid: action.payload.uid
       };
     default:
       return state;

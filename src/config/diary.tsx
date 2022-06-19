@@ -16,7 +16,7 @@ export const getDiaryList = async (item: DiaryItemProps) => {
   }
 }
 
-export const getDiaryData = async (item: DiaryItemProps) => {
+export const getDiaryData = async (item: {uid: string, date: string}) => {
   const diary = await getDocs(collection(db, 'DIARY', item.uid, item.date));
 
   const newData = diary.docs.map((doc) => ({

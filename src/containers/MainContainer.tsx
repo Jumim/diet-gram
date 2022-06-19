@@ -41,15 +41,15 @@ export const MainContainer = () => {
     const totalData = [
       {
         id: '탄수화물(g)',
-        value: totalCarbs
+        value: Math.floor(totalCarbs)
       },
       {
         id: '단백질(g)',
-        value: totalProtain
+        value: Math.floor(totalProtain)
       },
       {
         id: '지방(g)',
-        value: totalFat
+        value: Math.floor(totalFat)
       }
     ];
 

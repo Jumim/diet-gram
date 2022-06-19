@@ -1,3 +1,9 @@
+/* Auth */
+export interface AuthType {
+  authenticated: boolean
+  uid: string
+}
+
 /* Diary */
 export type SortType = 'breakfast' | 'lunch' | 'dinner' | 'snack';
 
@@ -18,8 +24,8 @@ export interface DiaryDataType {
 
 export interface DiaryListType {
   date?: string
-  sort: string
-  sortText: string
+  sort?: string
+  sortText?: string
   food?: any
   totalCal?: number
   totalCarbs?: number
