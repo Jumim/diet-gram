@@ -26,7 +26,7 @@ export const FoodList = ({ data, btnText, onClick, setInView }: FoodListType) =>
               <Icon type='Default' text={`단백질 ${Math.floor(Number(data.NUTR_CONT3))} g`} />
               <Icon type='Default' text={`지방 ${Math.floor(Number(data.NUTR_CONT4))} g`} />
             </div>
-            <Button btnType='positive' type='button' onClick={() => onClick(data)}>{btnText}</Button>
+            <Button btnType={btnText === '삭제' ? 'negative' : 'positive'} type='button' onClick={() => onClick(data)}>{btnText}</Button>
           </Feed>
         )
       }

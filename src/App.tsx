@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { auth } from "config/firebase";
 import { useDispatch, useSelector, batch } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
-import { setAuth, getUserThunk, getDiaryDataThunk } from 'store/modules';
+import { setAuth, getUserThunk, getDiaryDataThunk, resetAuth } from 'store/modules';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { LoginPage, MainPage, JoinPage, WritePage, EditPage } from 'components';
 import './App.scss';
@@ -28,17 +28,11 @@ function App() {
         });
       } else {
         // 메인페이지 접근 시, 로그아웃 상태면 로그인 페이지로 이동
-        const authData = {
-          authenticated: false,
-          uid: ''
-        }
-
-        dispatch(setAuth(authData));
         navi('/login');
       }
     });
     // eslint-disable-next-line
-  }, []);
+  }, [auth]);
 
   return (
     <div className="App">

@@ -23,7 +23,6 @@ export const MainContainer = () => {
   }
 
   const totalInfo = () => {
-    console.log('ddd');
     var totalCalorie = 0;
     var totalCarbs = 0;
     var totalProtain = 0;

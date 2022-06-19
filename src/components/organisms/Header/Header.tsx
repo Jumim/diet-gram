@@ -1,28 +1,23 @@
 import React from 'react';
-import { RiUserSmileFill } from 'react-icons/ri';
-import { Link, Button } from 'components';
 import './Header.scss';
 
 interface HeaderType {
-  children: React.ReactNode | React.ReactNode[]
-  handleLogout: () => void
+  left?: React.ReactNode | React.ReactNode[]
+  right?: React.ReactNode | React.ReactNode[]
+  center: React.ReactNode | React.ReactNode[]
 }
 
-export const Header = ({ children, handleLogout }: HeaderType) => {
+export const Header = ({ left, right, center }: HeaderType) => {
   return (
     <header>
       <div className='HeaderLeft'>
-        <Link to='/' type='none'>
-          <img src='image/dietgram_logo.png'></img>
-        </Link>
+        {left}
       </div>
       <div className='HeaderCenter'>
-        {children}
+        {center}
       </div>
       <div className='HeaderRight'>
-        <div onClick={handleLogout}>
-          <RiUserSmileFill />
-        </div>
+        {right}
       </div>
     </header>
   );

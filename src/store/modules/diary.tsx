@@ -4,13 +4,15 @@ import { DiaryItemProps, DiaryDataType, DiaryListType, SortType } from 'types';
 // 타입 선언
 // ReturnType <typeof > 는 특정 함수의 타입을 추론함.
 type diaryAction = ReturnType<typeof setDiaryList>
+  | ReturnType<typeof initDiaryList>
   | ReturnType<typeof removeDiaryList>
-  | ReturnType<typeof initDiaryList>;
+  | ReturnType<typeof resetDiaryList>;
 
 // 액션 타입 지정
 const SET_DIARYLIST = 'DIARY/SET_DIARY' as const;
 const INIT_DIARYLIST = 'DIARY/INIT_DIARYLIST' as const;
 const REMOVE_DIARYLIST = 'DIARY/REMOVE_DIARYLIST' as const;
+const RESET_DIARYLIST = 'DIARY/RESET_DIARYLIST' as const;
 
 // 액션 생성 함수 지정
 export const setDiaryList = (payload: { sort: string, data: DiaryListType }) => ({
@@ -26,6 +28,10 @@ export const initDiaryList = (payload: DiaryDataType) => ({
 export const removeDiaryList = (payload: SortType) => ({
   type: REMOVE_DIARYLIST,
   payload: payload
+});
+
+export const resetDiaryList = () => ({
+  type: RESET_DIARYLIST
 });
 
 export const getDiaryDataThunk = (diaryItem: { uid: string, date: string }): any => {
@@ -137,6 +143,8 @@ const diary = (state: DiaryDataType = initState, action: diaryAction): any => {
         ...state,
         [action.payload]: initState[action.payload]
       };
+    case RESET_DIARYLIST:
+      return state = initState;
     default:
       return state;
   }

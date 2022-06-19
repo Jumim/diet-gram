@@ -8,15 +8,21 @@ interface userType {
 }
 
 // 타입 선언
-type userAction = ReturnType<typeof setUser>;
+type userAction = ReturnType<typeof setUser>
+                | ReturnType<typeof resetUser>;
 
 // 액션 타입 지정
-const SET_USER = 'USER/SET_USER';
+const SET_USER = 'USER/SET_USER' as const;
+const RESET_USER = 'USER/RESET_USER' as const;
 
 // 액션 생성 함수 지정
-export const setUser = (data: any): {type: string; data: userType} => ({
+export const setUser = (data: any) => ({
   type: SET_USER,
-  data: data
+  payload: data
+});
+
+export const resetUser = () => ({
+  type: RESET_USER
 });
 
 export const getUserThunk = (uid: string): any => {
@@ -61,7 +67,9 @@ const initState: userType = {
 const user = (state: userType = initState, action: userAction): userType => {
   switch (action.type) {
     case SET_USER:
-      return action.data;
+      return action.payload;
+    case RESET_USER:
+     return state = initState;
     default:
       return state;
   }

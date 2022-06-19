@@ -1,7 +1,8 @@
-export { JoinFormContainer } from './JoinFormContainer';
-export { LoginFormContainer } from './LoginFormContainer';
-export { UserModalContainer } from './UserModalContainer';
-export { MainContainer } from './MainContainer';
-export { MainHeaderContainer } from './MainHeaderContainer';
-export { WriteFormContainer } from './WriteFormContainer';
-export { FoodModalContainer } from './FoodModalContainer';
+export * from './JoinFormContainer';
+export * from './LoginFormContainer';
+export * from './UserModalContainer';
+export * from './MainContainer';
+export * from './MainHeaderContainer';
+export * from './WriteFormContainer';
+export * from './FoodModalContainer';
+export * from './WriteHeaderContainer';
