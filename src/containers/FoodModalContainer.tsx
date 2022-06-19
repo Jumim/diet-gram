@@ -71,7 +71,6 @@ export const FoodModalContainer = () => {
 
     setCode(getList.code);
     setSearchText(text);
-
     // eslint-disable-next-line
   }, [pageData]);
 

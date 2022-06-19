@@ -33,7 +33,9 @@ export const FoodList = ({ data, btnText, onClick, setInView }: FoodListType) =>
       {
         (setInView && data.length > 0) &&
         <InView onChange={setInView}>
-          <Wrapper></Wrapper>
+          <Wrapper>
+            <Text>데이터 불러오는중</Text>
+          </Wrapper>
         </InView>
       }
     </div>

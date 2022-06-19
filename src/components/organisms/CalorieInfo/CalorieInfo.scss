@@ -7,7 +7,6 @@
   gap: 25px;
   width: 100%;
   box-sizing: border-box;
-  border-right: 2px solid $gray;
 
   .CalorieInfoTextArea {
     position: relative;
@@ -64,12 +63,14 @@
     }
   }
 }
+
 @media (max-width: 1200px) and (pointer: fine) {
   .CalorieInfo {
     border-right: none;
     border-bottom: 2px solid $gray;
   }
 }
+
 @media (pointer: coarse) {
   .CalorieInfo {
     border-right: none;

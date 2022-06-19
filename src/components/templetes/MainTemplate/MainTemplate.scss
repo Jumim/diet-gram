@@ -12,10 +12,16 @@
     box-sizing: border-box;
     background-color: $white;
 
-    > div.leftContents, div.rightContents {
+    > .leftContents, .rightContents {
       width: 50%;
-      height: 100%;
+      height: fit-content;
+      min-height: 100%;
+      max-height: fit-content;
       padding: 60px 6.8%;
+    }
+
+    > .rightContents {
+      border-left: 2px solid $gray;
     }
   }
 }

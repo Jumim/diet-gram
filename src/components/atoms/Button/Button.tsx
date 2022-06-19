@@ -15,7 +15,7 @@ export const Button= ({
   onClick
 }: ButtonProps) => {
   return (
-    <button className={['Button', `Button_${btnType}`].join(' ')} type={type} onClick={onClick}>
+    <button className={['Button', btnType].join(' ')} type={type} onClick={onClick}>
       {children}
     </button>
   );

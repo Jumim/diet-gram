@@ -42,7 +42,7 @@ export const FoodModal = ({
           code === 'INFO-200' ?
             <Text>검색 결과가 없습니다.</Text>
             :
-            foodData.length > 0 && <FoodList data={foodData} btnText='추가' onClick={foodListAdd} setInView={setInView} />
+            foodData.length > 0 && <FoodList data={foodData} btnText='추가' onClick={foodListAdd} setInView={setInView}/>
         }
       </div>
     </Modal>

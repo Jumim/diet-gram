@@ -1,10 +1,9 @@
 import { DefaultTemplate, Title } from 'components';
-import { WriteFormContainer, FoodModalContainer } from 'containers';
+import { WriteFormContainer, FoodModalContainer, WriteHeaderContainer } from 'containers';
 
 export const EditPage = () => {
   return (
-    <DefaultTemplate>
-      <Title>다이어리 수정</Title>
+    <DefaultTemplate header={<WriteHeaderContainer />}>
       <WriteFormContainer isEdit={true}/>
       <FoodModalContainer />
     </DefaultTemplate>
