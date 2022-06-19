@@ -10,30 +10,30 @@ const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  type: 'default',
+  type: 'Default',
   text: '아이콘'
 };
 
 export const Breakfast = Template.bind({});
 Breakfast.args = {
-  type: 'breakfast',
+  type: 'Breakfast',
   text: '아이콘'
 };
 
 export const Lunch = Template.bind({});
 Lunch.args = {
-  type: 'lunch',
+  type: 'Lunch',
   text: '아이콘'
 };
 
 export const Dinner = Template.bind({});
 Dinner.args = {
-  type: 'dinner',
+  type: 'Dinner',
   text: '아이콘'
 };
 
 export const Snack = Template.bind({});
 Snack.args = {
-  type: 'snack',
+  type: 'Snack',
   text: '아이콘'
 };

@@ -3,12 +3,12 @@ import './InputArea.scss';
 
 interface InputAreaProps {
   label: string
-  error?: string
   name: string
   type: string
   register: any
   defaultValue?: string | number | undefined
   placeholder?: string | undefined
+  error?: string
   readOnly?: boolean
 }
 
