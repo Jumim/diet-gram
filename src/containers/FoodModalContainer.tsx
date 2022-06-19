@@ -4,20 +4,20 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, setFoodModal, setFoodList } from 'store/modules';
 import { FoodModal } from 'components';
-import { FoodListType } from 'types';
+import { FoodListType, FoodSearchFormType } from 'types';
 
 export const FoodModalContainer = () => {
-  var pageData = {
+  let pageData = {
     startPage: 1,
     endPage: 10
   };
-  const [foodData, setFoodData] = useState<any>([]);
+  const [foodData, setFoodData] = useState<FoodListType[]>([]);
   const [code, setCode] = useState('');
   const [searchText, setSearchText] = useState('');
   const [inView, setInView] = useState(false);
-  const { register, handleSubmit, resetField } = useForm<any>();
+  const { register, handleSubmit, resetField } = useForm<FoodSearchFormType>();
   const dispatch = useDispatch();
-  const modal = useSelector((state: RootState) => state.foodModal);
+  const foodModal = useSelector((state: RootState) => state.foodModal);
 
   useEffect(() => {
     if (inView) {
@@ -27,7 +27,7 @@ export const FoodModalContainer = () => {
     // eslint-disable-next-line
   }, [inView]);
 
-  const onSubmit: SubmitHandler<any> = (data) => {
+  const onSubmit: SubmitHandler<FoodSearchFormType> = (data) => {
     if (data.selectText === '' || data.selectText === undefined) {
       alert('검색어를 입력해주세요.');
     } else {
@@ -61,15 +61,15 @@ export const FoodModalContainer = () => {
   }
 
   const getFoodListApi = useCallback(async (text: string) => {
-    const getData = await getFoodList(pageData, text);
+    const getList = await getFoodList(pageData, text);
 
     if (searchText === text && pageData.startPage > 1) {
-      setFoodData(foodData.concat(getData.foodData));
+      setFoodData(foodData.concat(getList.foodData));
     } else {
-      setFoodData(getData.foodData);
+      setFoodData(getList.foodData);
     }
 
-    setCode(getData.code);
+    setCode(getList.code);
     setSearchText(text);
 
     // eslint-disable-next-line
@@ -78,7 +78,7 @@ export const FoodModalContainer = () => {
   return (
     <>
       {
-        modal &&
+        foodModal &&
         <FoodModal
           handleModal={handleModal}
           onSubmit={handleSubmit(onSubmit)}

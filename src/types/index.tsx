@@ -52,6 +52,10 @@ export interface FoodListType {
   FOOD_CD: string
 }
 
+export interface FoodSearchFormType {
+  selectText: string
+}
+
 /* User */
 export interface UserFormType {
   name: string
