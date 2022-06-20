@@ -58,7 +58,8 @@ Default.args = {
       FOOD_CD: "D016255"
     }
   ],
-  btnText: '버튼',
-  onClick: () => { },
-  inView: false
+  btnText: '삭제',
+  onClick: () => {},
+  inView: false,
+  setInView: () => {}
 };

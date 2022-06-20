@@ -1,17 +1,23 @@
 import { InView } from 'react-intersection-observer';
-import { FoodListType as FoodType } from 'types';
+import { FoodListType } from 'types';
 import { Text, Button, Feed, Icon, Wrapper } from 'components';
 import './FoodList.scss';
 
-interface FoodListType {
-  data: FoodType[]
+interface FoodListProps {
+  data: FoodListType[]
   btnText: string
-  onClick: any
-  inView?: boolean
+  onClick: (data: FoodListType) => void
+  inView?: boolean,
   setInView?: any
 }
 
-export const FoodList = ({ data, btnText, onClick, setInView }: FoodListType) => {
+export const FoodList = ({
+  data,
+  btnText,
+  onClick,
+  inView,
+  setInView
+}: FoodListProps) => {
   return (
     <div className='FoodList'>
       {
@@ -34,7 +40,7 @@ export const FoodList = ({ data, btnText, onClick, setInView }: FoodListType) =>
         (setInView && data.length > 0) &&
         <InView onChange={setInView}>
           <Wrapper>
-            <Text>데이터 불러오는중</Text>
+            { inView && <Text>데이터 불러오는중</Text> }
           </Wrapper>
         </InView>
       }

@@ -78,6 +78,5 @@ NotResult.args = {
   onSubmit: () => {},
   code: 'INFO-200',
   foodData: [],
-  foodListAdd: () => {},
-  setInView: () => {}
+  foodListAdd: () => {}
 };

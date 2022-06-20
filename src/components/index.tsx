@@ -1,5 +1,6 @@
 /* atoms */
 export { Button } from './atoms/Button/Button';
+export { Close } from './atoms/Close/Close';
 export { Feed } from './atoms/Feed/Feed';
 export { Icon } from './atoms/Icon/Icon';
 export { Input } from './atoms/Input/Input';
@@ -11,7 +12,6 @@ export { Title } from './atoms/Title/Title';
 export { Wrapper } from './atoms/Wrapper/Wrapper';
 
 /* molecules */
-export { CloseButton } from './molecules/CloseButton/CloseButton';
 export { FoodList } from './molecules/FoodList/FoodList';
 export { Form } from './molecules/Form/Form';
 export { IconList } from './molecules/IconList/IconList';

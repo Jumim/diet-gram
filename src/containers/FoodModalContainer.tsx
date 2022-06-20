@@ -85,6 +85,7 @@ export const FoodModalContainer = () => {
           code={code}
           foodData={foodData}
           foodListAdd={foodListAdd}
+          inView={inView}
           setInView={setInView}
         />
       }
