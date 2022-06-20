@@ -61,11 +61,11 @@ export const MainHeaderContainer = () => {
     <Header
       left={
         <Link to='/' type='none'>
-          <img src='image/dietgram_logo.png'></img>
+          <img src={`${process.env.PUBLIC_URL}/image/dietgram_logo.png`}></img>
         </Link>
       }
       right={
-        <div onClick={handleLogout}>
+        <div className='LogoutBtn' onClick={handleLogout}>
           <RiUserSmileFill />
         </div>
       }
