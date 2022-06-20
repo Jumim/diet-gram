@@ -2,9 +2,9 @@ import { useEffect } from 'react';
 import { auth } from "config/firebase";
 import { useDispatch, useSelector, batch } from 'react-redux';
 import { RootState } from 'store/modules/rootReducer';
-import { setAuth, getUserThunk, getDiaryDataThunk, resetAuth } from 'store/modules';
+import { setAuth, getUserThunk, getDiaryDataThunk } from 'store/modules';
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { LoginPage, MainPage, JoinPage, WritePage, EditPage } from 'components';
+import { LoginPage, MainPage, JoinPage, WritePage, EditPage, NotFoundPage } from 'components';
 import './App.scss';
 
 function App() {
@@ -42,6 +42,7 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/join' element={<JoinPage />} />
         <Route path='/edit/:sort' element={<EditPage />} />
+        <Route path={'*'} element={<NotFoundPage />}/>
       </Routes>
     </div>
   );

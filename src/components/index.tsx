@@ -28,6 +28,7 @@ export { LoginForm } from './organisms/LoginForm/LoginForm';
 export { JoinForm } from './organisms/JoinForm/JoinForm';
 export { WriteForm } from './organisms/WriteForm/WriteForm';
 export { UserModal } from './organisms/UserModal/UserModal';
+export { NotFound } from './organisms/NotFound/NotFound';
 
 /* pages */
 export { JoinPage } from './pages/JoinPage/JoinPage';
@@ -35,6 +36,7 @@ export { LoginPage } from './pages/LoginPage/LoginPage';
 export { MainPage } from './pages/MainPage/MainPage';
 export { WritePage } from './pages/WritePage/WritePage';
 export { EditPage } from './pages/EditPage/EditPage';
+export { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 /* templetes */
 export { DefaultTemplate } from './templetes/DefaultTemplate/DefaultTemplate';
