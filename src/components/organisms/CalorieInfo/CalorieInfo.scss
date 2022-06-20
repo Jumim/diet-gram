@@ -67,13 +67,11 @@
 @media (max-width: 1200px) and (pointer: fine) {
   .CalorieInfo {
     border-right: none;
-    border-bottom: 2px solid $gray;
   }
 }
 
 @media (pointer: coarse) {
   .CalorieInfo {
     border-right: none;
-    border-bottom: 2px solid $gray;
   }
 }

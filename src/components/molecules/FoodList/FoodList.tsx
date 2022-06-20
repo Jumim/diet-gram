@@ -37,7 +37,7 @@ export const FoodList = ({
         )
       }
       {
-        (setInView && data.length > 0) &&
+        (setInView && data.length > 3) &&
         <InView onChange={setInView}>
           <Wrapper>
             { inView && <Text>데이터 불러오는중</Text> }

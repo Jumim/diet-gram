@@ -14,11 +14,11 @@ export const MyResponsivePie = ({ data }: MyResponsivePieType) => {
     <div className='nutrientsGraph'>
       <ResponsivePie
         data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+        margin={{ top: 0, right: 65, bottom: -50, left: 65 }}
         innerRadius={0.6}
         activeOuterRadiusOffset={8}
-        arcLinkLabelsDiagonalLength={12}
-        arcLinkLabelsStraightLength={12}
+        arcLinkLabelsDiagonalLength={6}
+        arcLinkLabelsStraightLength={6}
         colors={{ scheme: 'pastel2' }}
         legends={[]}
       />

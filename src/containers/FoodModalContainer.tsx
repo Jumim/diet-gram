@@ -63,6 +63,8 @@ export const FoodModalContainer = () => {
   const getFoodListApi = useCallback(async (text: string) => {
     const getList = await getFoodList(pageData, text);
 
+    console.log(getList);
+
     if (searchText === text && pageData.startPage > 1) {
       setFoodData(foodData.concat(getList.foodData));
     } else {
