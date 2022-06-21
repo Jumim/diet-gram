@@ -13,13 +13,15 @@ export const MainContainer = () => {
   const diary = useSelector((state: RootState) => state.diary);
 
   const deleteDiaryItem = (sort: SortType) => {
-    const diaryItem: DiaryItemProps = {
-      uid: userData.uid,
-      date: date,
-      sort: sort,
-    };
+    if(window.confirm('다이어리를 삭제하시겠습니까?')) {
+      const diaryItem: DiaryItemProps = {
+        uid: userData.uid,
+        date: date,
+        sort: sort,
+      };
 
-    dispatch(deleteDiaryDataThunk(diaryItem));
+      dispatch(deleteDiaryDataThunk(diaryItem));
+    }
   }
 
   const totalInfo = () => {

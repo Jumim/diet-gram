@@ -60,7 +60,7 @@ export const WriteFormContainer = ({ isEdit }: { isEdit?: boolean }) => {
   }
 
   const handleRemoveFoodList = (foodData: FoodListType) => {
-    if(window.confirm('다이어리를 삭제하시겠습니까?')) {
+    if(window.confirm('음식을 삭제하시겠습니까?')) {
       dispatch(removeFoodList(foodData.FOOD_CD));
     }
   }
