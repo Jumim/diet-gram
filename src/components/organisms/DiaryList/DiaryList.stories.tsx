@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof DiaryList> = (args) => {
       <DiaryList {...args} />
     </MemoryRouter>
   )
-};
+}
 
 export const Default = Template.bind({});
 Default.args = {

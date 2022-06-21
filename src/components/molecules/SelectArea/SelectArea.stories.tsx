@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof SelectArea> = (args) => {
   return (
     <SelectArea {...args} register={register} />
   )
-};
+}
 
 export const Default = Template.bind({});
 Default.args = {

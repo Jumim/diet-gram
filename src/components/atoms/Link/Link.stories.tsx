@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof Link> = (args) => {
       <Link {...args} />
     </MemoryRouter>
   )
-};
+}
 
 export const Default = Template.bind({});
 Default.args = {

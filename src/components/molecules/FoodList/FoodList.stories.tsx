@@ -6,7 +6,11 @@ export default {
   component: FoodList,
 } as ComponentMeta<typeof FoodList>;
 
-const Template: ComponentStory<typeof FoodList> = (args) => <FoodList {...args} />;
+const Template: ComponentStory<typeof FoodList> = (args) => {
+  return (
+    <FoodList {...args} />
+  )
+}
 
 export const Default = Template.bind({});
 Default.args = {

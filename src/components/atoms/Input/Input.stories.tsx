@@ -11,7 +11,7 @@ const Template: ComponentStory<typeof Input> = (args) => {
   const { register } = useForm();
 
   return <Input {...args} register={register} />
-};
+}
 
 export const Default = Template.bind({});
 Default.args = {

@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof InputArea> = (args) => {
   return (
     <InputArea {...args} register={register} />
   )
-};
+}
 
 export const Default = Template.bind({});
 Default.args = {

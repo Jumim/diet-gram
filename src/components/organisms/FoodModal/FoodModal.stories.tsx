@@ -80,3 +80,13 @@ NotResult.args = {
   foodData: [],
   foodListAdd: () => {}
 };
+
+export const Loading = Template.bind({});
+Loading.args = {
+  handleModal: () => {},
+  onSubmit: () => {},
+  code: 'INFO-000',
+  foodData: [],
+  foodListAdd: () => {},
+  isLoading: true
+};
