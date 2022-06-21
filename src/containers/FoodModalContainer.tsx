@@ -15,6 +15,7 @@ export const FoodModalContainer = () => {
   const [code, setCode] = useState('');
   const [searchText, setSearchText] = useState('');
   const [inView, setInView] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { register, handleSubmit, resetField } = useForm<FoodSearchFormType>();
   const dispatch = useDispatch();
   const foodModal = useSelector((state: RootState) => state.foodModal);
@@ -38,6 +39,7 @@ export const FoodModalContainer = () => {
       };
 
       setFoodData([]);
+      setIsLoading(true);
       getFoodListApi(data.selectText);
     }
   }
@@ -63,7 +65,7 @@ export const FoodModalContainer = () => {
   const getFoodListApi = useCallback(async (text: string) => {
     const getList = await getFoodList(pageData, text);
 
-    console.log(getList);
+    setIsLoading(false);
 
     if (searchText === text && pageData.startPage > 1) {
       setFoodData(foodData.concat(getList.foodData));
@@ -89,6 +91,7 @@ export const FoodModalContainer = () => {
           foodListAdd={foodListAdd}
           inView={inView}
           setInView={setInView}
+          isLoading={isLoading}
         />
       }
     </>

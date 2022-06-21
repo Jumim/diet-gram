@@ -1,5 +1,5 @@
 import { FoodListType } from 'types';
-import { Modal, Input, Button, FoodList, Text, Form, Title, Close } from 'components';
+import { Modal, Input, Button, FoodList, Text, Form, Title, Close, Loading } from 'components';
 import './FoodModal.scss';
 
 interface FoodModalProps {
@@ -10,7 +10,8 @@ interface FoodModalProps {
   foodData: FoodListType[]
   foodListAdd: (foodData: FoodListType) => void
   inView?: boolean,
-  setInView?: any
+  setInView?: any,
+  isLoading?: boolean
 }
 
 export const FoodModal = ({
@@ -21,7 +22,8 @@ export const FoodModal = ({
   foodData,
   foodListAdd,
   inView,
-  setInView
+  setInView,
+  isLoading
 }: FoodModalProps) => {
   return (
     <Modal>
@@ -43,10 +45,16 @@ export const FoodModal = ({
           </Button>
         </Form>
         {
-          code === 'INFO-200' ?
+          isLoading &&
+          <div className='FoodListLoading'>
+            <Loading />
+          </div>
+        }
+        {
+          (code === 'INFO-200' && foodData.length === 0) ?
             <Text>검색 결과가 없습니다.</Text>
             :
-            foodData.length > 0 && <FoodList data={foodData} btnText='추가' onClick={foodListAdd} inView={inView} setInView={setInView}/>
+             <FoodList data={foodData} btnText='추가' onClick={foodListAdd} inView={inView} setInView={setInView} isData={code === 'INFO-200' ? true : false} />
         }
       </div>
     </Modal>

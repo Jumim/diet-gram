@@ -1,6 +1,6 @@
 import { InView } from 'react-intersection-observer';
 import { FoodListType } from 'types';
-import { Text, Button, Feed, Icon, Wrapper } from 'components';
+import { Text, Button, Feed, Icon, Wrapper, Loading } from 'components';
 import './FoodList.scss';
 
 interface FoodListProps {
@@ -8,7 +8,8 @@ interface FoodListProps {
   btnText: string
   onClick: (data: FoodListType) => void
   inView?: boolean,
-  setInView?: any
+  setInView?: any,
+  isData?: boolean
 }
 
 export const FoodList = ({
@@ -16,7 +17,8 @@ export const FoodList = ({
   btnText,
   onClick,
   inView,
-  setInView
+  setInView,
+  isData
 }: FoodListProps) => {
   return (
     <div className='FoodList'>
@@ -24,7 +26,7 @@ export const FoodList = ({
         data.map((data, i) =>
           <Feed key={'FoodFeed_' + i} className='FoodFeed'>
             <div className='NutrientsText'>
-              <Text>{data.DESC_KOR}</Text>
+              <Text>{data.DESC_KOR}({data.SERVING_SIZE}g)</Text>
               <Text>{Math.floor(Number(data.NUTR_CONT1)) + ' kcal'}</Text>
             </div>
             <div className='NutrientsIconList'>
@@ -40,7 +42,11 @@ export const FoodList = ({
         (setInView && data.length > 3) &&
         <InView onChange={setInView}>
           <Wrapper>
-            { inView && <Text>데이터 불러오는중</Text> }
+            { (inView && !isData) ?
+                <Loading />
+                :
+                <Text>마지막 페이지입니다.</Text>
+            }
           </Wrapper>
         </InView>
       }
