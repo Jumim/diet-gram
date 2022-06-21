@@ -59,13 +59,19 @@ export const WriteFormContainer = ({ isEdit }: { isEdit?: boolean }) => {
     }
   }
 
+  const handleRemoveFoodList = (foodData: FoodListType) => {
+    if(window.confirm('다이어리를 삭제하시겠습니까?')) {
+      dispatch(removeFoodList(foodData.FOOD_CD));
+    }
+  }
+
   return (
     <WriteForm
       onSubmit={handleSubmit(onSubmit)}
       register={register}
       date={date}
       foodList={foodList}
-      handleRemoveFoodList={(foodData: FoodListType) => dispatch(removeFoodList(foodData.FOOD_CD))}
+      handleRemoveFoodList={handleRemoveFoodList}
       handleFoodModal={() => dispatch(setFoodModal(true))}
       sortValue={getSortText(sort)}
     />

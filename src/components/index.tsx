@@ -10,6 +10,7 @@ export { Modal } from './atoms/Modal/Modal';
 export { Text } from './atoms/Text/Text';
 export { Title } from './atoms/Title/Title';
 export { Wrapper } from './atoms/Wrapper/Wrapper';
+export { Loading } from './atoms/Loading/Loading';
 
 /* molecules */
 export { FoodList } from './molecules/FoodList/FoodList';

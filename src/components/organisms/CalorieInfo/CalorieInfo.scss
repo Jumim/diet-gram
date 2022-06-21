@@ -1,6 +1,7 @@
 @import '_variable.scss';
 
 .CalorieInfo {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
