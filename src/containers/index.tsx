@@ -6,3 +6,4 @@ export * from './MainHeaderContainer';
 export * from './WriteFormContainer';
 export * from './FoodModalContainer';
 export * from './WriteHeaderContainer';
+export * from './MyPageContainer';

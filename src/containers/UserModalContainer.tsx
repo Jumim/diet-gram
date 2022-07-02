@@ -7,7 +7,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { UserModal } from 'components';
 import { UserFormType } from 'types';
 
-export const UserModalContainer = () => {
+// 모달에 클로즈 버튼 추가하고
+
+export const UserModalContainer = ({closeSet}: {closeSet: boolean}) => {
   const dispatch = useDispatch();
   const authData = useSelector((state: RootState) => state.auth);
   const userModal = useSelector((state: RootState) => state.userModal);
@@ -40,6 +42,8 @@ export const UserModalContainer = () => {
       {
         userModal &&
         <UserModal
+          closeSet={closeSet}
+          handleModal={() => dispatch(setUserModal(false))}
           onSubmit={handleSubmit(onSubmit)}
           register={register}
           errors={errors}

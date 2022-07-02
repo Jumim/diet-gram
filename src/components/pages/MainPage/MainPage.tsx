@@ -4,7 +4,7 @@ import { UserModalContainer, MainHeaderContainer, MainContainer } from 'containe
 export const MainPage = () => {
   return (
     <MainTemplate header={<MainHeaderContainer />}>
-      <UserModalContainer />
+      <UserModalContainer closeSet={false} />
       <MainContainer />
     </MainTemplate>
   )

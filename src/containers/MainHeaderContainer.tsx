@@ -4,7 +4,7 @@ import { RootState } from 'store/modules/rootReducer';
 import { setDate, getDiaryDataThunk, resetAuth, resetUser, resetDiaryList } from 'store/modules';
 import { logout } from 'config/auth';
 import { Button, Header, Text, Link } from 'components';
-import { RiUserSmileFill } from 'react-icons/ri';
+import { RiUserSmileFill, RiLogoutBoxRLine } from 'react-icons/ri';
 import { AiOutlineDoubleLeft, AiOutlineDoubleRight } from 'react-icons/ai';
 
 export const MainHeaderContainer = () => {
@@ -65,9 +65,10 @@ export const MainHeaderContainer = () => {
         </Link>
       }
       right={
-        <div className='LogoutBtn' onClick={handleLogout}>
-          <RiUserSmileFill />
-        </div>
+        <>
+          <Button type='button' btnType='default' onClick={() => navi('/mypage')}><RiUserSmileFill /></Button>
+          <Button type='button' btnType='default' onClick={handleLogout}><RiLogoutBoxRLine /></Button>
+        </>
       }
       center={
         <>

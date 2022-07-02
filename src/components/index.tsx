@@ -30,6 +30,7 @@ export { JoinForm } from './organisms/JoinForm/JoinForm';
 export { WriteForm } from './organisms/WriteForm/WriteForm';
 export { UserModal } from './organisms/UserModal/UserModal';
 export { NotFound } from './organisms/NotFound/NotFound';
+export { Mypage } from './organisms/Mypage/Mypage';
 
 /* pages */
 export { JoinPage } from './pages/JoinPage/JoinPage';
@@ -37,6 +38,7 @@ export { LoginPage } from './pages/LoginPage/LoginPage';
 export { MainPage } from './pages/MainPage/MainPage';
 export { WritePage } from './pages/WritePage/WritePage';
 export { EditPage } from './pages/EditPage/EditPage';
+export { MyPage } from './pages/MyPage/MyPage';
 export { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 
 /* templetes */

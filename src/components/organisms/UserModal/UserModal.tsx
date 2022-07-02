@@ -1,7 +1,9 @@
-import { Modal, Title, Text, Button, InputArea, SelectArea, Form } from 'components';
+import { Modal, Title, Text, Button, InputArea, SelectArea, Form, Close } from 'components';
 import './UserModal.scss';
 
 interface UserModalProps {
+  closeSet: boolean
+  handleModal: () => void
   onSubmit: () => void
   register: any
   errors: any
@@ -9,6 +11,8 @@ interface UserModalProps {
 }
 
 export const UserModal = ({
+  closeSet,
+  handleModal,
   onSubmit,
   register,
   errors,
@@ -18,6 +22,12 @@ export const UserModal = ({
     <Modal>
       <div className='UserModalTop'>
         <Title>유저 정보 입력</Title>
+        {
+          closeSet &&
+          <Button btnType='default' type='button' onClick={handleModal}>
+            <Close />
+          </Button>
+        }
       </div>
       <div className='UserModalBottom'>
         <div className='UserContent'>

@@ -42,11 +42,10 @@ header {
   .HeaderRight {
     width: 25%;
     justify-content: flex-end;
-    cursor: pointer;
+    gap: 1.2em;
 
-    .LogoutBtn {
-      width: 1em;
-      height: 1em;
+    svg {
+      font-size: 1.4em;
     }
   }
 }
