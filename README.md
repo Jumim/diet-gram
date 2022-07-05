@@ -1,6 +1,6 @@
 ![header](https://capsule-render.vercel.app/api?type=soft&color=a0cef2&height=140&section=header&text=DIETGRAM&fontSize=40&fontColor=f5f9ff&animation=twinkling)
 
-🔗 [https://jumim.github.io/jumim-portfolio/](https://jumim.github.io/jumim-portfolio/)
+🔗 [https://react-diet-gram.web.app/](https://react-diet-gram.web.app/)
 
 ---
 
