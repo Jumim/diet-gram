@@ -10,7 +10,10 @@ export const Mypage = ({
   return (
     <div className='MyPage'>
       <Button btnType='positive' type='button' onClick={handleModal}>
-        내 정보 변경하기
+        내 정보 변경
+      </Button>
+      <Button btnType='negative' type='button' onClick={() => {}}>
+        회원 탈퇴
       </Button>
     </div>
   )
